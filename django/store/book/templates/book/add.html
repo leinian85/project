@@ -1,0 +1,44 @@
+{% extends "book/index.html" %}
+{% block title %}
+<title>新增书籍</title>
+{% endblock%}
+{% block body %}
+{{ book }}
+<form action="{% if book %}/book/update_book
+              {% else %}/book/add_book
+              {% endif %}"
+      method="post">
+    <input type="text" hidden name = "id" value={{ book.id }}>
+    <div>
+        书名: <input type="text" name="title" value="{{ book.title }}">
+    </div>
+
+    {% if pubs is not null %}
+    <div>出版社:
+        <select name="pub_id">
+            {% for pub in pubs %}
+            <option value="{{ pub.id }}"
+                    {% if book.pub_id == pub.id %}selected{% endif %}>
+                {{ pub.name }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    {% endif %}
+
+    {% if authors is not null %}
+    <div>作者:
+        <select name="author_id">
+            {% for author in authors %}
+            <option value="{{ author.id }}"
+                    {% if book.author_id == author.id %}selected{% endif %}>
+                {{ author.name }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    {% endif %}
+    <input type="submit" value="{% if book %}修改{% else %}增加{% endif %}">
+</form>
+{{ msg }}
+{% endblock body %}

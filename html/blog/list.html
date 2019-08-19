@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文章列表</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/list.css">
+    <!-- 导入jq框架文件 -->
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+    <!-- 1.添加页面需求的元素
+         2.编写元素的布局和样式
+         3.微调,优化代码 -->
+    
+    <!-- 设计导航条元素 -->
+    <div id="nav">
+        <div class="box">
+            <div class="title">
+                <h3>个人博客</h3>
+            </div>
+            <div class="list">
+                <ul>
+                    <li><a href="index.html">个人首页</a></li>
+                    <li class="focus">文章列表</li>
+                    <li><a href="mypic.html">我的相册</a></li>
+                    <li>时间轴</li>
+                    <li>留言</li>
+                    <li>关于我</li>
+                    <li>发表博客</li>
+                </ul>
+            </div>
+            <!-- 导航链接 -->
+            <div class="a1">
+                <a href="login.html">登录</a>
+                <a href="regist.html">注册</a>
+            </div>
+        </div>
+    </div>
+    <div class="adimg">
+        <img src="imgs/page_bg.png" alt="">
+    </div>
+    <!-- 最大的页面元素 -->
+    <div id="list">
+        <div class="top">
+            <div class="tleft">
+                <h3>文章列表</h3>
+            </div>
+            <div class="tright">
+                <p></p>
+            </div>
+        </div>
+        <!-- 添加主体元素 -->
+        <div class="body">
+            <!-- 列表部分 -->
+            <div class="list">
+                
+
+            </div>
+            <!-- 广告推荐 -->
+            <div class="ad">
+                <div class="adtip">
+                    <h3>特别推荐</h3>
+                </div>
+                <div class="line">
+                </div>
+                <div class="imglst">
+                    <ul>
+                        <li>
+                            <img src="imgs/banner03.jpg" alt="">
+                        </li>
+                        <li>
+                            <img src="imgs/b04.jpg" alt="">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 导入业务逻辑文件 -->
+    <script src="js/blog.js"></script>
+</body>
+</html>

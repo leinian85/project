@@ -1,0 +1,159 @@
+/* 请空浏览器元素默认的属性值 */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* 清除列表元素的样式 */
+ul {
+    list-style-type: none;
+}
+
+/* 清除超级链接的下划线 */
+a {
+    text-decoration: none;
+    color: #e9f5ec;
+}
+
+.focus{
+    color: #B8EAEE !important;
+}
+
+/* 全局广告图片样式 */
+.adimg{
+    margin-top:75px;
+    margin-bottom:20px;
+    width: 100%;
+}
+.adimg>img{
+    width: 100%;
+}
+
+/* 导航条的样式 */
+#nav {
+    width: 100%;
+    position: fixed;
+    border: solid 0px red;
+    top: 0px;
+    left: 0px;
+    background-color: #555555;
+}
+/* 设置样式显示的字体 */
+body{
+    font-size: 13px;
+}
+
+
+#nav>.box{
+   overflow: hidden; 
+   width: 960px;
+   margin: 0px auto;
+   padding: 24px 0px;
+   border: solid 0px blue;
+
+}
+
+#nav>.box>.title{
+    float: left;
+    margin-right: 70px;
+}
+
+#nav>.box>.title>h3 {
+    color: #B8EAEE;
+    font-size: 20px;
+}
+
+#nav>.box>.list{
+    float: left;
+}
+
+#nav>.box>.list>ul{
+    float: left;
+}
+
+#nav>.box>.list>ul>li{
+    float: left;
+    margin-right: 30px;
+    color: #e9f5ec;
+}
+
+#nav>.box>.a1{
+    float: right;
+    color: #e9f5ec;
+}
+#nav>.box>.a1>a{
+    margin-right: 10px;
+    color: #e9f5ec;
+}
+
+#login>img{
+    width: 100%;
+    /* height: 100%; */
+    position: fixed;
+    opacity: 0.5; /* 设置元素的透明度 */
+}
+
+#login>.log{
+    position: absolute;
+    height: 375px;
+    width: 410px;
+    left:50%;
+    margin-left:-205px;
+    top:20%;
+    z-index:9999;
+    border-radius: 10px;
+    border: solid 0px red;
+    background-color:#ffffff;
+    box-shadow: 3px 3px 5px #666;
+
+}
+
+#login>.log>.title{
+    text-align: center;
+    padding: 20px 0 40px 0;
+    border-bottom:solid 1px #cccccc;
+}
+
+#login>.log>.title>h3{
+    font-size: 24px;
+}
+
+#login>.log>.tip{
+    margin: 32px 0px 10px 28px; 
+    font-size: 20px;
+}
+
+#login>.log>.item>input{
+    width: 280px;
+    margin:8px 0px 5px 28px;
+    padding: 8px;
+    border-radius:3px;
+    outline: none; /* 去除选中的轮廓线 */
+    border:solid 1px #cccccc;
+}
+
+#login>.log>.error{
+    margin:10px 28px;
+    color:red;
+    display: none;
+}
+#login>.log>.btn{
+    margin-top: 15px;
+
+}
+#login>.log>.btn>input{
+    margin-left: 28px;
+    width: 70px;
+    padding: 8px 0px;
+    border: none;
+    border-radius:3px;
+
+    /* background-color: #cccccc; */
+}
+
+#login>.log>.btn>input:hover{
+    background-color:#666;
+    color:#ffffff;
+}
+
+/* 列表页的样式 */

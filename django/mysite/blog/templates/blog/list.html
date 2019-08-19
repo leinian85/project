@@ -1,0 +1,46 @@
+{% extends "blog/index.html" %}
+{% block type_css_js %}
+    <link rel="stylesheet" href="/static/css/list.css">
+    <script src="/static/js/jquery.min.js"></script>
+{% endblock type_css_js%}
+
+{% block page_info %}
+    <div id="list">
+        <div class="top">
+            <div class="tleft">
+                <h3>文章列表</h3>
+            </div>
+            <div class="tright">
+                <p></p>
+            </div>
+        </div>
+        <!-- 添加主体元素 -->
+        <div class="body">
+            <!-- 列表部分 -->
+            <div class="list">
+                
+
+            </div>
+            <!-- 广告推荐 -->
+            <div class="ad">
+                <div class="adtip">
+                    <h3>特别推荐</h3>
+                </div>
+                <div class="line">
+                </div>
+                <div class="imglst">
+                    <ul>
+                        <li>
+                            <img src="/static/imgs/banner03.jpg" alt="">
+                        </li>
+                        <li>
+                            <img src="/static/imgs/b04.jpg" alt="">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 导入业务逻辑文件 -->
+    <script src="/static/js/blog.js"></script>
+{% endblock page_info%}

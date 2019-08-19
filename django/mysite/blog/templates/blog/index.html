@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    {% block type_css_js %}
+    {% endblock %}
+</head>
+
+<body>
+    <!-- 设计导航条元素 -->
+    <div id="nav">
+        <div class="box">
+            <div class="title">
+                <h3>个人博客</h3>
+            </div>
+            <div class="list">
+                <ul>
+                    <li class="/blog/focus">个人首页</li>
+                    <li><a href="/blog/list">文章列表</a></li>
+                    <li><a href="/blog/mypic">我的相册</a></li>
+                    <li>时间轴</li>
+                    <li>留言</li>
+                    <li>关于我</li>
+                    <li>发表博客</li>
+                </ul>
+            </div>
+            <!-- 导航链接 -->
+            <div class="a1">
+                <a href="/blog/login">登录</a>
+                <a href="/blog/regist">注册</a>
+            </div>
+        </div>
+    </div>
+    <div class="adimg">
+        <img src="/static/imgs/page_bg1.png" alt="">
+    </div>
+    {% block page_info %}
+    {% endblock %}
+</body>
+
+</html>

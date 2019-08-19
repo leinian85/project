@@ -1,0 +1,21 @@
+{% extends "book/index.html" %}
+{% block body %}
+<table>
+    <tr>
+        <td>书名</td>
+        <td>作者</td>
+        <td>出版社</td>
+        <td>修改</td>
+        <td>删除</td>
+    </tr>
+    {% for book in books %}
+    <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.pub }}</td>
+        <td><a href="/book/add_book?id={{ book.id }}">修改</a></td>
+        <td><a href="/book/del_book?id={{ book.id }}">删除</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock body%}
