@@ -132,11 +132,25 @@ body{
     border:solid 1px #cccccc;
 }
 
+#login>.log>.item>div{
+    line-height: 19px;
+    margin:8px 0px 5px 28px;
+}
+#login>.log>.item>div>.input{
+    float: left;
+    top:8px;
+}
+
 #login>.log>.error{
     margin:10px 28px;
     color:red;
     display: none;
 }
+#login>.log>.error_msg{
+    margin:10px 28px;
+    color:red;
+}
+
 #login>.log>.btn{
     margin-top: 15px;
 
@@ -157,3 +171,109 @@ body{
 }
 
 /* 列表页的样式 */
+
+
+#regist>img{
+    width: 100%;
+    /* height: 100%; */
+    position: fixed;
+    opacity: 0.5; /* 设置元素的透明度 */
+}
+
+#regist>.log{
+    position: absolute;
+    height: 375px;
+    width: 410px;
+    left:50%;
+    margin-left:-205px;
+    top:20%;
+    z-index:9999;
+    border-radius: 10px;
+    border: solid 0px red;
+    background-color:#ffffff;
+    box-shadow: 3px 3px 5px #666;
+
+}
+
+#regist>.log>.title{
+    text-align: center;
+    padding: 20px 0 40px 0;
+    border-bottom:solid 1px #cccccc;
+}
+
+#regist>.log>.title>h3{
+    font-size: 24px;
+}
+
+#regist>.log>.tip{
+    margin: 32px 0px 10px 28px;
+    font-size: 20px;
+}
+
+#regist>.log>.item{
+    margin:8px 0px 5px 28px;
+}
+
+#regist>.log>.item>input{
+    width: 280px;
+    margin:0px 0px 0px 18px;
+    padding: 8px;
+    border-radius:3px;
+    outline: none; /* 去除选中的轮廓线 */
+    border:solid 1px #cccccc;
+}
+
+#regist>.log>.error{
+    margin:10px 28px;
+    color:red;
+    display: none;
+}
+
+#regist>.log>.error_msg{
+    margin:10px 28px;
+    color:red;
+}
+
+#regist>.log>.btn{
+    margin-top: 15px;
+
+}
+#regist>.log>.btn>input{
+    margin-left: 28px;
+    width: 70px;
+    padding: 8px 0px;
+    border: none;
+    border-radius:3px;
+
+    /* background-color: #cccccc; */
+}
+
+#regist>.log>.btn>input:hover{
+    background-color:#666;
+    color:#ffffff;
+}
+
+
+-------------------
+
+#OK>img{
+    width: 100%;
+    /* height: 100%; */
+    position: fixed;
+    opacity: 0.5; /* 设置元素的透明度 */
+}
+
+#OK>.log{
+    position: absolute;
+    height: 375px;
+    width: 410px;
+    left:50%;
+    margin-left:-205px;
+    top:20%;
+    z-index:9999;
+    border-radius: 10px;
+    border: solid 0px red;
+    background-color:#ffffff;
+    box-shadow: 3px 3px 5px #666;
+
+}

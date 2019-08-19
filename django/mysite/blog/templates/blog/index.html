@@ -31,8 +31,13 @@
             </div>
             <!-- 导航链接 -->
             <div class="a1">
+                {% if request.session.user.username %}
+                    欢迎:{{ request.session.user.username }}
+                    <a href="/blog/logout">注销</a>
+                {% else %}
                 <a href="/blog/login">登录</a>
                 <a href="/blog/regist">注册</a>
+                {% endif %}
             </div>
         </div>
     </div>

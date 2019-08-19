@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^mypic$', views.mypic),
     url(r'^login$', views.login),
     url(r'^regist$', views.regist),
+    url(r'^logout$', views.logout),
 ]

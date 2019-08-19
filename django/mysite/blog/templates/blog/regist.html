@@ -5,26 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>登录</title>
+    <title>注册</title>
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/blog.js"></script>
 </head>
 
 <body>
-    <form action="/blog/login" onsubmit="return checkvalue()" method="post">
-        <div id="login">
+    <form action="/blog/regist" onsubmit="" method="post">
+        <div id="regist">
             <!-- 背景图片 -->
             <img src="/static/imgs/b.jpg" alt="">
             <div class="log">
                 <div class="title">
-                    <h3>Login!</h3>
+                    <h3>Regist!</h3>
                 </div>
                 <div class="tip">
-                    Login
+                    Regist
                 </div>
                 <div class="item">
-                    <input type="text" name="username" id="username" placeholder="Username" value="{{ username }}">
+                    用户:<input type="text" name="username" id="username" placeholder="Username"
+                              value="{{ request.session.user.username }}">
                 </div>
                 <div class="error">
                     用户名不能为空!
@@ -33,21 +34,25 @@
                     {{ user_error }}
                 </div>
                 <div class="item">
-                    <input type="password" name="password" id="password" placeholder="Password">
+                    密码:<input type="password" name="password1" id="password1" placeholder="Password">
                 </div>
                 <div class="error">
                     密码不能为空!
                 </div>
                 <div class="error_msg">
-                    {{ password_error }}
+                    {{ password1_error }}
                 </div>
                 <div class="item">
-                    <div>
-                       <input class="checkbox" type="checkbox" name="remember" value="1">记住用户名
-                    </div>
+                    密码:<input type="password" name="password2" id="password2" placeholder="Password Again">
+                </div>
+                <div class="error">
+                    密码不能为空!
+                </div>
+                <div class="error_msg">
+                    {{ password2_error }}
                 </div>
                 <div class="btn">
-                    <input type="submit" value="Login">
+                    <input type="submit" value="Regist">
                 </div>
             </div>
         </div>
