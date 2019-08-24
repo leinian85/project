@@ -1,0 +1,19 @@
+1.select option中的文字居中的问题 
+设置(但是只能 select 居中,option还是居中不了):
+select{
+    text-align:center;
+    text-align-last: center;
+}
+
+2.静态文件问题
+调试模式下(DEBUG = True)
+静态文件的路径为setting里面设置的路径
+非调试模式下(DEBUG = False)
+静态文件的路径为nginx里面设置的路径
+
+3.单选框和复选框垂直方向对齐的问题,以及与文字垂直方向对齐的问题
+设置:
+input,span{
+    vertical-align:middle;
+}
+
