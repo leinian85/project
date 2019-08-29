@@ -61,10 +61,6 @@ class Jwt:
 
         hm = hmac.new(key, header_bs.encode() + b'.' + payload_bs.encode(), digestmod="SHA256")
 
-        # 比对
-        print(sign_bs.encode())
-        print(Jwt.b64encode(hm.digest()))
-
         if Jwt.b64encode(hm.digest()) != sign_bs.encode():
             raise TokenError("签名不正确!")
 
@@ -80,7 +76,5 @@ class Jwt:
 
 if __name__ == "__main__":
     j = Jwt.encode({"username": "guoxiaonao"}, '12345', 'aaa')
-
     print(j)
-
     print(Jwt.decode(j, '12345'))

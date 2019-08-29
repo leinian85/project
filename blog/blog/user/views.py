@@ -2,20 +2,18 @@ from django.http import JsonResponse
 import json
 from . import models
 import hashlib
-from common import my_jwt
-from common import config
+from common import my_jwt,config,login_check
 
 
 # Create your views here.
+@login_check.login_check("PUT")
 def users(request, username=None):
     result = {"code": 200, "error": ""}
 
     if request.method == "GET":
         if username:
-            print("username:",username)
             try:
                 user = models.User.objects.get(username=username)
-                print("user.info:",user.username)
                 data = {}
                 if request.GET:
                     for column in request.GET:
@@ -95,9 +93,43 @@ def users(request, username=None):
         result["data"] = data
         result["username"] = username
 
+        return JsonResponse(result)
     elif request.method == "PUT":
-        # 更新数据
-        pass
+        print(request.user)
+        if username != request.user.username:
+            result["code"] = 207
+            result["error"] = "数据异常"
+            return JsonResponse(result)
+
+        json_str = request.body
+        if not json_str:
+            result["code"] = 209
+            result["error"] = "数据异常"
+            return JsonResponse(result)
+
+        json_obj = json.loads(json_str)
+        if 'sign' not in json_obj:
+            result["code"] = 210
+            result["error"] = "没有 sign"
+            return JsonResponse(result)
+        if 'info' not in json_obj:
+            result["code"] = 211
+            result["error"] = "没有 info"
+            return JsonResponse(result)
+        if 'nickname' not in json_obj:
+            result["code"] = 211
+            result["error"] = "没有 nickname"
+            return JsonResponse(result)
+
+        sign = json_obj["sign"]
+        info = json_obj["info"]
+        nickname = json_obj["nickname"]
+        request.user.sign =sign
+        request.user.info =info
+        request.user.nickname =nickname
+        request.user.save()
+
+        return JsonResponse(result)
     else:
         result["code"] = 110
         result["error"] = "无效的请求"
