@@ -1,70 +1,80 @@
-from django.shortcuts import render
 from django.http import JsonResponse
 import json
-from user.myexcept import DataError
 from . import models
 import hashlib
-from . import my_jwt
+from common import my_jwt
+from common import config
+
 
 # Create your views here.
 def users(request):
-    key = "leinian"
-    redata = {"code":200,"error":""}
+    result = {"code": 200, "error": ""}
 
     if request.method == "GET":
         # 获取用户数据
         pass
     elif request.method == "POST":
         # 创建用户
-        cdata = json.loads(request.body)
-        username = cdata["username"]
-        email= cdata["email"]
-        password_1= cdata["password_1"]
-        password_2= cdata["password_2"]
-        hs = hashlib.md5()
-        hs.update(password_1.encode())
-        password = hs.hexdigest()
+        json_obj = json.loads(request.body)
+        username = json_obj.get("username")
+        if not username:
+            result["code"] = 201
+            result["error"] = "用户名不能为空"
+            return JsonResponse(result)
 
-        if len(password_1) == 0 or len(username) == 0:
-            redata["code"] = 201
-            redata["error"] = "用户名或密码不能为空"
-            return JsonResponse(redata)
+        password_1 = json_obj.get("password_1")
+        password_2 = json_obj.get("password_2")
+        if not password_1 or not password_2:
+            result["code"] = 202
+            result["error"] = "密码不能为空"
+            return JsonResponse(result)
 
         if password_1 != password_2:
-            redata["code"] = 202
-            redata["error"] = "2次输入的密码不一致"
-            return JsonResponse(redata)
+            result["code"] = 203
+            result["error"] = "2次输入的密码不一致"
+            return JsonResponse(result)
+
+        email = json_obj.get("email")
+        if not email:
+            result["code"] = 204
+            result["error"] = "邮箱不能为空"
+            return JsonResponse(result)
+
+        users = models.User.objects.filter(username=username)
+        if users:
+            result["code"] = 205
+            result["error"] = "用户名已存在"
+            return JsonResponse(result)
 
         try:
-            auser = models.User.objects.get(username = username)
-            redata["code"] = 203
-            redata["error"] = "用户名已存在"
-            return JsonResponse(redata)
-        except:
-            pass
+            hs = hashlib.md5()
+            hs.update(password_1.encode())
+            password = hs.hexdigest()
 
-        try:
-            user = models.User()
-            user.username = username
-            user.password = password
-            user.nickname = username
-            user.email = email
-            user.save()
+            models.User.objects.create(
+                username=username,
+                password=password,
+                nickname=username,
+                email=email,
+                sign="世界那么大,我来你博客啦"
+            )
         except:
-            redata["code"] = 203
-            redata["error"] = "数据不正确"
-            return JsonResponse(redata)
+            result["code"] = 206
+            result["error"] = "数据不正确"
+            return JsonResponse(result)
 
-        payload = {"username":username}
+        payload = {"username": username}
         jwt = my_jwt.Jwt()
-        token = jwt.encode(payload,key,24*60*60)
-        data = {"token":token.decode()}
-        redata = {"data":data,"username":username,"code":200}
+        token = jwt.encode(payload, config.key, config.times)
+        data = {"token": token.decode()}
+        result["data"] = data
+        result["username"] = username
 
     elif request.method == "PUT":
         # 更新数据
         pass
     else:
-        raise DataError("请求无效")
+        result["code"] = 110
+        result["error"] = "无效的请求"
 
-    return JsonResponse(redata)
+    return JsonResponse(result)

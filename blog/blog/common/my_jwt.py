@@ -8,6 +8,7 @@ import hmac
 class TokenError(Exception):
     pass
 
+
 class Jwt:
     @staticmethod
     def b64encode(content):
