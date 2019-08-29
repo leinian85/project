@@ -7,12 +7,37 @@ from common import config
 
 
 # Create your views here.
-def users(request):
+def users(request, username=None):
     result = {"code": 200, "error": ""}
 
     if request.method == "GET":
-        # 获取用户数据
-        pass
+        if username:
+            print("username:",username)
+            try:
+                user = models.User.objects.get(username=username)
+                print("user.info:",user.username)
+                data = {}
+                if request.GET:
+                    for column in request.GET:
+                        if hasattr(user,column):
+                            data[column] = getattr(user,column)
+                else:
+                    data = {"info": user.info,
+                            "sign": user.sign,
+                            "nickname": user.nickname,
+                            "avatar": str(user.avatar)}
+                result["data"] = data
+                result["username"] = username
+
+            except Exception as e:
+                result["code"] = 111
+                result["error"] = str(e)
+
+            return JsonResponse(result)
+        else:
+            result["code"] = 110
+            result["error"] = "无效的请求"
+            return JsonResponse(result)
     elif request.method == "POST":
         # 创建用户
         json_obj = json.loads(request.body)
