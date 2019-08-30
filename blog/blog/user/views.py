@@ -6,7 +6,7 @@ from common import my_jwt,config,login_check
 
 
 # Create your views here.
-@login_check.login_check("PUT")
+@login_check.login_check("PUT","GET")
 def users(request, username=None):
     result = {"code": 200, "error": ""}
 
@@ -134,4 +134,21 @@ def users(request, username=None):
         result["code"] = 110
         result["error"] = "无效的请求"
 
+    return JsonResponse(result)
+
+@login_check.login_check("POST")
+def user_avatar(request,username):
+    if request.method != "POST":
+        result = {"code": 212, "error": "不是post请求"}
+        return JsonResponse(result)
+
+    avatat = request.FILES.get("avatar")
+    if not avatat:
+        result = {"code": 200, "error": "I need avatar"}
+        return JsonResponse(result)
+
+    request.user.avatar = avatat
+    request.user.save()
+
+    result = {"code":200,"error":"I am avatar"}
     return JsonResponse(result)

@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^$', views.users),
     # APPEND_SLASH = False
     url(r'^/(?P<username>[\w]{1,30})$', views.users),
+    url(r'^/(?P<username>[\w]{1,30})/avatar$', views.user_avatar),
 ]

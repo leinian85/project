@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'user',
     'btoken',
+    'topic',
 ]
 
 MIDDLEWARE = [
@@ -114,7 +115,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
@@ -144,6 +145,9 @@ CORS_ALLOW_HEADERS = (
 )
 
 APPEND_SLASH = False
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # CORS_PREFLIGHT_MAX_AGE = 86400
 # CORS_EXPOSE_HEADERS = []
