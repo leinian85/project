@@ -152,3 +152,5 @@ CORS_ALLOW_HEADERS = (
     'x-csrftoken',
     'x-requested-with',
 )
+
+APPEND_SLASH = False
