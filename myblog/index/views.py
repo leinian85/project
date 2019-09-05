@@ -8,7 +8,6 @@ from user.models import UserProfile
 def index(request, username=None):
     try:
         if request.method == "GET":
-
             if username:
                 try:
                     auser = UserProfile.objects.get(username = username)
