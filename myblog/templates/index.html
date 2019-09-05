@@ -15,13 +15,18 @@
 </head>
 
 <body>
+  <script>
+    token = window.localStorage.getItem('dnblog_token');
+    username = window.localStorage.getItem('dnblog_user');
+  </script>
+    
   <header id="header">
     <!--menu begin-->
     <div class="menu">
       <nav class="nav" id="topnav">
         <h1 class="logo"><a href="index.html">个人博客</a></h1>
         <li><a href="index.html">网站首页</a> </li>
-        <li><a href="list.html">文章列表</a>
+        <li><a href="/topics/">文章列表</a>
           <ul class="sub-nav">
             <li><a href="list.html">Python</a></li>
             <li><a href="list.html">python Web</a></li>
@@ -30,10 +35,7 @@
             <li><a href="list.html">JS实例索引</a></li>
           </ul>
         </li>
-        <li><a href="photo.html">我的相册</a>
-        </li>
-        <li><a href="gbook.html">留言</a> </li>
-        <li><a href="about.html">关于我</a> </li>
+        <li><a href="photo.html">我的相册</a></li>
         <li><a href="release.html">发表博客</a></li>
       </nav>
     </div>

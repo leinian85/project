@@ -80,6 +80,7 @@
                 window.localStorage.setItem('dnblog_token', result.data.token)
                 window.localStorage.setItem('dnblog_user', result.username)
                 alert("注册成功 点击确认即可条转到自己博客的主页")
+                // request.setRequestHeader("Authorization", result.data.token)
                 window.location.href = '/index/' + result.username
             }else{
                 alert(result.error)

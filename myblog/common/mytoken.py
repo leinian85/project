@@ -13,3 +13,8 @@ def token(username):
     payload = {"username": username, "exp": time.time() + 300}
     token = jwt.encode(payload=payload, key=cnf.key, algorithm="HS256")
     return token.decode()
+
+
+def username_for_token(token):
+    payload = jwt.decode(token, key=cnf.key, algorithm="HS256")
+    return payload["username"]

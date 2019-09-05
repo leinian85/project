@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse, HttpResponseRedirect
 import common.config as cf
 from common import mytoken
-from .models import User
+from .models import UserProfile
 import json,jwt,time
 
 
@@ -10,7 +10,7 @@ import json,jwt,time
 def register(request):
     try:
         if request.method == "GET":
-            return render(request, "user/register.html")
+            return render(request, "register.html")
         elif request.method == "POST":
             json_str = request.body
             json_obj = json.loads(json_str)
@@ -38,7 +38,7 @@ def register(request):
                 return JsonResponse(result)
 
 
-            user = User.objects.filter(username=username)
+            user = UserProfile.objects.filter(username=username)
             if user:
                 result = {"code": 305, "error": cf.resmsg["305"]}
                 return JsonResponse(result)
@@ -46,7 +46,7 @@ def register(request):
 
             password = mytoken.pwd(password1)
 
-            User.objects.create(
+            UserProfile.objects.create(
                 username=username,
                 password=password,
                 nickname=nickname,
@@ -55,14 +55,13 @@ def register(request):
             )
 
             token = mytoken.token(username)
-            print(token)
             result = {"code": 200, "error": "","username":username,"data":{"token":token}}
             return JsonResponse(result)
         else:
-            result = {"code": 306, "error": cf.resmsg["306"]}
+            result = {"code": 370, "error": cf.resmsg["370"]}
             return JsonResponse(result)
     except Exception as e:
-        result = {"code": 100, "error": cf.resmsg["100"]}
+        result = {"code": 399, "error": cf.resmsg["399"]}
         return JsonResponse(result)
 
 def login(request):
@@ -70,5 +69,5 @@ def login(request):
         result = {"code": 200, "error": ""}
         return JsonResponse(result)
     except:
-        result = {"code": 100, "error": cf.resmsg["100"]}
+        result = {"code": 398, "error": cf.resmsg["398"]}
         return JsonResponse(result)

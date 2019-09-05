@@ -20,7 +20,7 @@ function makeHeader(blog_username, username){
     header_body += '<div class="menu">';
     header_body += ' <nav class="nav" id="topnav"> ';
     header_body += '<h1 class="logo"><a href="/index"> ' + blog_username + '的博客</a></h1>';
-    header_body += '<li><a href="/index">网站首页</a></li>';
+    header_body += '<li><a href="/index/">网站首页</a></li>';
     header_body += '<li>';
     header_body += '<a href=' + '"' + user_topics_url + '"' + '>文章列表</a>';
     header_body += '<ul class="sub-nav">';
@@ -36,12 +36,26 @@ function makeHeader(blog_username, username){
     if (username){
         header_body += '<li><a href= /' + username + '/change_info id="change_info" target="_blank">编辑</a></li>';
         //header_body += '<li><a href="/" id="login_out" target="_blank">登出</a></li>';
-        header_body += '<li><span id="login_out" target="_blank">登出</span></li>';
+        header_body += '<li><span id="login_out" target="_blank">退出</span></li>';
     }else{
-        header_body += '<a href="/login" id="login" target="_blank">登陆</a>';
+        header_body += '<a href="login" id="login" target="_blank">登陆</a>';
         header_body += '<a href="register.html" id="register" target="_blank">注册</a>';
     }
     header_body += '</header>';
 
     return header_body
+}
+
+function loginOut(){
+
+    $('#login_out').on('click', function(){
+
+            if(confirm("确定登出吗？")){
+                window.localStorage.removeItem('dnblog_token');
+                window.localStorage.removeItem('dnblog_user');
+                window.location.href= '/index/';
+            }
+        }
+    )
+
 }

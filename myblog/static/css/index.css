@@ -150,7 +150,7 @@ h1.t_nav { border-bottom: #bfbfbf 1px solid; font-size: 14px; font-weight: norma
 .sh { background: url(../images/page_bg1.png) no-repeat; background-size: cover; background-position:top center; }
 .timer { background: url(../images/page_time.png) no-repeat; background-size: cover; background-position: top center; }
 .photo { background: url(../images/page_photo.png) no-repeat; background-size: cover; background-position: top center; }
-.re {background: url(../images/re_bg.png) no-repeat; background-size: cover; background-position: top center;}
+.re {background: url(../imgs/re_bg.png) no-repeat; background-size: cover; background-position: top center;}
 
 /*share*/
 .share { overflow: hidden; padding-top: 10px }
@@ -248,7 +248,7 @@ h1.t_nav { border-bottom: #bfbfbf 1px solid; font-size: 14px; font-weight: norma
 #login{color: #E5F2F2;display: inline-block;position: absolute;top:35px;right:220px;}
 #login:hover{color:#fff;}
 #login_out{color: #E5F2F2;display: inline-block;position: absolute;top:35px;right:170px;}
-#login_out:hover{color:#fff;}
+#login_out:hover{color:#fff;cursor:pointer;}
 #register{color: #E5F2F2;display: inline-block;position: absolute;top:35px;right:170px;}
 #register:hover{color:#fff;}
 #change_info{color: #E5F2F2;display: inline-block;position: absolute;top:35px;right:220px;}
