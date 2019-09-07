@@ -15,16 +15,18 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-+840b3utbuebjl9tka@j6r*_ewth)=p+m$tci#w6bhixd2as4'
+SECRET_KEY = 'v(1v767u&3210%z99f)ctaaaotg+zbxajzgug7n2!*_l=&fyi#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
 
 # Application definition
 
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'user',
     'btoken',
     'topic',
+    'message'
 ]
 
 MIDDLEWARE = [
@@ -46,7 +49,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -72,6 +75,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'blog.wsgi.application'
 
+
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -81,10 +85,11 @@ DATABASES = {
         'NAME': 'blog',
         'USER': 'root',
         'PASSWORD': '123456',
-        'PORT': '3306',
         'HOST': '127.0.0.1',
+        'PORT': '3306'
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -104,6 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -116,6 +122,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = False
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
@@ -144,11 +151,9 @@ CORS_ALLOW_HEADERS = (
     'x-requested-with',
 )
 
+
 APPEND_SLASH = False
 
 MEDIA_URL = '/media/'
+#媒体资源存放的服务器目录
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
-# CORS_PREFLIGHT_MAX_AGE = 86400
-# CORS_EXPOSE_HEADERS = []
-# CORS_ALLOW_CREDENTIALS = False
