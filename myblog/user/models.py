@@ -9,7 +9,7 @@ class UserProfile(models.Model):
     password = models.CharField(max_length=32)
     sign = models.CharField(max_length=50, verbose_name='个性签名')
     info = models.CharField(max_length=150, verbose_name='个人描述')
-    avatar = models.ImageField(upload_to='avatar/')
+    avatar = models.ImageField(upload_to='static/avatar/')
 
     class Meta:
         db_table = 'user_profile'

@@ -10,7 +10,7 @@ def pwd(password):
 
 
 def token(username):
-    payload = {"username": username, "exp": time.time() + 300}
+    payload = {"username": username, "exp": time.time() + 3000}
     token = jwt.encode(payload=payload, key=cnf.key, algorithm="HS256")
     return token.decode()
 
@@ -18,3 +18,4 @@ def token(username):
 def username_for_token(token):
     payload = jwt.decode(token, key=cnf.key, algorithm="HS256")
     return payload["username"]
+

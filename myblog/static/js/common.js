@@ -29,17 +29,16 @@ function makeHeader(blog_username, username){
     header_body += '</ul>';
     header_body += '</li>';
     header_body += '<li><a href="photo.html">我的相册</a> </li>';
-    header_body += '<li><a href=' + '"' + user_info_url + '"' + '>关于我</a> </li>';
     header_body += '<li><a href=' + '"' + topic_release_url + '"' + '>发表博客</a> </li>';
     header_body += '</nav>';
     header_body += '</div>';
     if (username){
-        header_body += '<li><a href= /' + username + '/change_info id="change_info" target="_blank">编辑</a></li>';
+        header_body += '<li><a href= /users/change/' + username + ' id="change_info" target="_blank">编辑</a></li>';
         //header_body += '<li><a href="/" id="login_out" target="_blank">登出</a></li>';
         header_body += '<li><span id="login_out" target="_blank">退出</span></li>';
     }else{
-        header_body += '<a href="login" id="login" target="_blank">登陆</a>';
-        header_body += '<a href="register.html" id="register" target="_blank">注册</a>';
+        header_body += '<a href="/users/login" id="login" target="_blank">登陆</a>';
+        header_body += '<a href="/users/register" id="register" target="_blank">注册</a>';
     }
     header_body += '</header>';
 
