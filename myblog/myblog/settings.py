@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blog',
         'USER': 'root',
-        'PASSWORD': '123456',
+        'PASSWORD': 'ln123456',
         'PORT': '3306',
         'HOST': '127.0.0.1',
     }
@@ -130,6 +130,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static'),
 )
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = (
+#     os.path.join(BASE_DIR,'media'),
+# )
 
 
 CORS_ORIGIN_ALLOW_ALL = True

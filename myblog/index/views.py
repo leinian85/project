@@ -10,10 +10,10 @@ def index(request, username=None):
         if request.method == "GET":
             if username:
                 try:
-                    auser = UserProfile.objects.get(username = username)
-                    return render(request, "list.html",locals())
+                    auser = UserProfile.objects.get(username=username)
+                    return render(request, "list.html", locals())
                 except:
-                    result = {"code": 401, "error": cf.resmsg["401"]}
+                    result = cf.error_msg("410")
                     return JsonResponse(result)
             else:
                 return render(request, "index.html")
@@ -21,9 +21,8 @@ def index(request, username=None):
             result = {"code": 200, "error": ""}
             return JsonResponse(result)
         else:
-            result = {"code": 470, "error": cf.resmsg["470"]}
+            result = cf.error_msg("470")
             return JsonResponse(result)
     except Exception as e:
-        result = {"code": 499, "error": cf.resmsg["499"]}
-        # result = {"code": 499, "error": e}
+        result = cf.error_msg("499", msg=e)
         return JsonResponse(result)

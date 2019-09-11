@@ -13,7 +13,7 @@ class Topic(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     modified_time = models.DateTimeField(auto_now=True)
     #外键
-    author = models.ForeignKey(UserProfile)
+    author = models.ForeignKey(UserProfile,on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'topic'

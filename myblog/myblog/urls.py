@@ -24,3 +24,6 @@ urlpatterns = [
     url(r'^topics/', include('topic.urls')),
 
 ]
+
+# #生成媒体资源路由
+# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

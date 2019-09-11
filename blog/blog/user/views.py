@@ -1,154 +1,198 @@
-from django.http import JsonResponse
-import json
-from . import models
 import hashlib
-from common import my_jwt,config,login_check
+import json
+import time
 
+from django.http import JsonResponse
+from django.shortcuts import render
+from .models import *
+from btoken.views import make_token
+from tools.login_check import login_check
 
 # Create your views here.
-@login_check.login_check("PUT","GET")
+@login_check('PUT')
 def users(request, username=None):
-    result = {"code": 200, "error": ""}
 
-    if request.method == "GET":
+    if request.method == 'GET':
+        #获取用户数据
         if username:
+            #/v1/users/<username>
+            #拿指定用户数据
             try:
-                user = models.User.objects.get(username=username)
-                data = {}
-                if request.GET:
-                    for column in request.GET:
-                        if hasattr(user,column):
-                            data[column] = getattr(user,column)
-                else:
-                    data = {"info": user.info,
-                            "sign": user.sign,
-                            "nickname": user.nickname,
-                            "avatar": str(user.avatar)}
-                result["data"] = data
-                result["username"] = username
-
+                user = UserProfile.objects.get(username=username)
             except Exception as e:
-                result["code"] = 111
-                result["error"] = str(e)
+                user = None
+            if not user:
+                result = {'code': 208, 'error': 'no user'}
+                return JsonResponse(result)
+            #检查是否有查询字符串
+            if request.GET.keys():
+                #查询指定字段
+                data = {}
+                for k in request.GET.keys():
+                    if hasattr(user, k):
+                        v = getattr(user, k)
+                        if k == 'avatar':
+                            data[k] = str(v)
+                        else:
+                            data[k] = v
+                result = {'code':200, 'username':username, 'data':data}
+                return JsonResponse(result)
+            else:
+                #全量查询【password email 不给】
+                result = {'code':200, 'username':username, 'data':{'info':user.info, 'sign':user.sign, 'avatar':str(user.avatar),'nickname':user.nickname}}
+                return JsonResponse(result)
 
-            return JsonResponse(result)
+            return JsonResponse({'code': 200, 'error':'wolaila GET %s'%(username)})
         else:
-            result["code"] = 110
-            result["error"] = "无效的请求"
-            return JsonResponse(result)
-    elif request.method == "POST":
-        # 创建用户
-        json_obj = json.loads(request.body)
-        username = json_obj.get("username")
-        if not username:
-            result["code"] = 201
-            result["error"] = "用户名不能为空"
-            return JsonResponse(result)
+            #/v1/users
+            return JsonResponse({'code':200, 'error':'wolaile GET'})
 
-        password_1 = json_obj.get("password_1")
-        password_2 = json_obj.get("password_2")
+    elif request.method == 'POST':
+        #此功能模块异常码  201 开始
+        #request.POST  只能拿表单post提交的数据
+        #创建用户
+        #前端注册页面地址  http://127.0.0.1:5000/register
+        # print(request.body)
+        # dict = json.loads(request.body)
+        # import jwt
+        # jwt.encode()
+        json_str = request.body
+        if not json_str:
+            result = {'code': 201, 'error': 'Please give me data'}
+            return JsonResponse(result)
+        json_obj = json.loads(json_str)
+
+        username = json_obj.get('username')
+        if not username:
+            result = {'code':202, 'error':'Please give me username'}
+            return  JsonResponse(result)
+
+        email = json_obj.get('email')
+        if not email:
+            result = {'code':203, 'error': 'Please give me email'}
+            return JsonResponse(result)
+        password_1 = json_obj.get('password_1')
+        password_2 = json_obj.get('password_2')
         if not password_1 or not password_2:
-            result["code"] = 202
-            result["error"] = "密码不能为空"
+            result = {'code':204, 'error': 'Please give me password'}
             return JsonResponse(result)
 
         if password_1 != password_2:
-            result["code"] = 203
-            result["error"] = "2次输入的密码不一致"
+            result = {'code':205, 'error': 'Your password not same'}
             return JsonResponse(result)
-
-        email = json_obj.get("email")
-        if not email:
-            result["code"] = 204
-            result["error"] = "邮箱不能为空"
+        #优先查询当前用户名是否已存在
+        old_user = UserProfile.objects.filter(username=username)
+        if old_user:
+            result = {'code':206, 'error':'Your username is already existed'}
             return JsonResponse(result)
-
-        users = models.User.objects.filter(username=username)
-        if users:
-            result["code"] = 205
-            result["error"] = "用户名已存在"
-            return JsonResponse(result)
-
+        #密码处理 md5哈希/散列
+        m = hashlib.md5()
+        m.update(password_1.encode())
+        #======charfield 尽量避免使用 null=True
+        sign = info = ''
         try:
-            hs = hashlib.md5()
-            hs.update(password_1.encode())
-            password = hs.hexdigest()
-
-            models.User.objects.create(
-                username=username,
-                password=password,
-                nickname=username,
-                email=email,
-                sign="世界那么大,我来你博客啦"
-            )
-        except:
-            result["code"] = 206
-            result["error"] = "数据不正确"
+            UserProfile.objects.create(username=username,nickname=username,password=m.hexdigest(),sign=sign,info=info,email=email)
+        except Exception as e:
+            #数据库down了， 用户名已存在
+            result = {'code': 207, 'error': 'Server is busy'}
             return JsonResponse(result)
-
-        payload = {"username": username}
-        jwt = my_jwt.Jwt()
-        token = jwt.encode(payload, config.key, config.times)
-        data = {"token": token.decode()}
-        result["data"] = data
-        result["username"] = username
-
+        #make token
+        token = make_token(username)
+        #正常返回给前端
+        result = {'code':200, 'username':username, 'data':{'token':token.decode()}}
         return JsonResponse(result)
-    elif request.method == "PUT":
-        print(request.user)
-        if username != request.user.username:
-            result["code"] = 207
-            result["error"] = "数据异常"
-            return JsonResponse(result)
 
+    elif request.method == 'PUT':
+        #http://127.0.0.1:5000/<username>/change_info
+        #更新数据
+        #此头可获取前端传来的token
+        #META可拿取http协议原生请求头,META 也是类字典对象，可使用
+        #字典相关方法
+        #特别注意 http头有可能被django重命名，建议百度
+        request.META.get('HTTP_AUTHORIZATION')
+
+        user = request.user
         json_str = request.body
         if not json_str:
-            result["code"] = 209
-            result["error"] = "数据异常"
+            result = {'code':209, 'error':'Please give me json'}
             return JsonResponse(result)
 
         json_obj = json.loads(json_str)
+
         if 'sign' not in json_obj:
-            result["code"] = 210
-            result["error"] = "没有 sign"
+            result = {'code':210, 'error': 'no sign'}
             return JsonResponse(result)
         if 'info' not in json_obj:
-            result["code"] = 211
-            result["error"] = "没有 info"
+            result = {'code':211, 'error': 'no info'}
             return JsonResponse(result)
-        if 'nickname' not in json_obj:
-            result["code"] = 211
-            result["error"] = "没有 nickname"
-            return JsonResponse(result)
+        sign = json_obj.get('sign')
+        info = json_obj.get('info')
 
-        sign = json_obj["sign"]
-        info = json_obj["info"]
-        nickname = json_obj["nickname"]
-        request.user.sign =sign
-        request.user.info =info
-        request.user.nickname =nickname
+        request.user.sign = sign
+        request.user.info = info
         request.user.save()
-
+        result = {'code':200, 'username':request.user.username}
         return JsonResponse(result)
+
+
+
+
+
+
+
+
+
+
+
     else:
-        result["code"] = 110
-        result["error"] = "无效的请求"
+        raise
 
-    return JsonResponse(result)
+    return JsonResponse({'code':200})
 
-@login_check.login_check("POST")
-def user_avatar(request,username):
-    if request.method != "POST":
-        result = {"code": 212, "error": "不是post请求"}
+
+
+
+
+@login_check('POST')
+def user_avatar(request, username):
+    '''
+    上传用户头像
+    :param request:
+    :param username:
+    :return:
+    '''
+    if request.method != 'POST':
+        result = {'code':212, 'error': 'I need post'}
         return JsonResponse(result)
-
-    avatat = request.FILES.get("avatar")
-    if not avatat:
-        result = {"code": 200, "error": "I need avatar"}
+    avatar = request.FILES.get('avatar')
+    if not avatar:
+        result = {'code':213, 'error': 'I need avatar'}
         return JsonResponse(result)
-
-    request.user.avatar = avatat
+    #TODO 判断url中的username 是否 跟 token 中的username一致，若不一致，则返回error
+    request.user.avatar = avatar
     request.user.save()
-
-    result = {"code":200,"error":"I am avatar"}
+    result = {'code':200, 'username':request.user.username}
     return JsonResponse(result)
+
+
+
+
+
+
+
+
+
+
+
+
+    return JsonResponse({'code':200, 'error':'wo shi avatar'})
+
+
+
+
+
+
+
+
+
+

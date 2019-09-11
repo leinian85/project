@@ -8,23 +8,22 @@ from user.models import UserProfile
 
 def gettopic(login_username, username):
     try:
-        user = UserProfile.objects.filter(username = username)
-        print(user)
+        user = UserProfile.objects.filter(username=username)
         if not user:
             return None
         # 博主自己访问自己的文章
         auser = user[0]
-        print(auser)
         if login_username == username:
             topics = auser.topic_set.all()
         else:
-            topics = auser.topic_set.filter(limit = "public")
+            topics = auser.topic_set.filter(limit="public")
 
         if not topics:
             topics = ""
-        return (auser.nickname,topics)
+        return (auser.nickname, topics)
     except:
         return None
+
 
 # Create your views here.
 def topic(request, username):
@@ -37,21 +36,19 @@ def topic(request, username):
 
                 datas = gettopic(login_username, username)
                 if datas:
-                    nickname,topics = datas
+                    nickname, topics = datas
                 else:
-                    result = {"code": 518, "error": cf.resmsg["518"]}
+                    result = cf.error_msg("518")
                     return JsonResponse(result)
 
-                result = {"code": 200, "error": "", "nickname":nickname,"data": {"topics":topics}}
+                result = {"code": 200, "error": "", "nickname": nickname, "data": {"topics": topics}}
                 return JsonResponse(result)
             except Exception as e:
-                result = {"code": 519, "error": e}
+                result = cf.error_msg("519", msg=e)
                 return JsonResponse(result)
         else:
-            result = {"code": 570, "error": cf.resmsg["570"]}
+            result = cf.error_msg("570")
             return JsonResponse(result)
     except Exception as e:
-        print(e)
-        result = {"code": 599, "error": e}
-        # result = {"code": 599, "error": cf.resmsg["599"]}
+        result = cf.error_msg("599", msg=e)
         return JsonResponse(result)
