@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^index/', include('index.urls')),
     url(r'^users/', include('user.urls')),
     url(r'^topics/', include('topic.urls')),
+    url(r'^release/', include('topic.urls')),
 
 ]
 

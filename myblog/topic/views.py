@@ -52,3 +52,12 @@ def topic(request, username):
     except Exception as e:
         result = cf.error_msg("599", msg=e)
         return JsonResponse(result)
+
+
+def release(request):
+    try:
+        if request.method == "GET":
+            return render(request,"")
+    except Exception as e:
+        result = cf.error_msg("598", msg=e)
+        return JsonResponse(result)
