@@ -124,7 +124,7 @@ def now():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
 
-baseurl = "http://code.tarena.com.cn/AIDCode/aid1905/11_ajax/day01/"
+baseurl = "http://code.tarena.com.cn/AIDCode/aid1905/"
 # 设置下载目录
 downdir = "/home/tarena/1905/"
 # 设置忽略文件夹
