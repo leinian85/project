@@ -1,11 +1,5 @@
 <!doctype html>
 <html>
-<!--
-author:guojunyu
-date:2019-05-21
-desc:this demo is about blog. PLEASE NOTE:If you have trouble running it ,try any of the other demos or connect with auther.
-A ny individuals and organizations and not for commercial use, professiona website for customized web site.
--->
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,10 +30,11 @@ A ny individuals and organizations and not for commercial use, professiona websi
       // 请求方式
       type:"get",
       // url
-      url:"http://127.0.0.1:8000/v1/users/"+ username,
+      url: "/topics/" + username,
       async: false,
       beforeSend: function(request) {
           request.setRequestHeader("Authorization", token);
+          console.log(token)
       },
       success:function (result) {
           if (200 == result.code){

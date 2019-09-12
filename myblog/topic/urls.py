@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     url(r'^$', views.topic),
     url(r'^(?P<username>[\w]{1,11})', views.topic),
-    url(r'^release/(?P<username>[\w]{1,11})', views.release),
+    url(r'^release/(?P<username>[\w]{1,11})', views.re_release),
+    # url(r'^po_release/(?P<username>[\w]{1,11})', views.po_release),
 
 ]
