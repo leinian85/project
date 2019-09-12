@@ -4,6 +4,7 @@ import common.config as cf
 import json
 import common.mytoken as mytoken
 from user.models import UserProfile
+from common.check import check_token
 
 
 def gettopic(login_username, username):
@@ -31,7 +32,7 @@ def topic(request, username):
         if request.method == "GET":
             try:
                 token = request.META.get("HTTP_AUTHORIZATION")
-
+                print(token)
                 login_username = mytoken.username_for_token(token)
 
                 datas = gettopic(login_username, username)
@@ -51,4 +52,26 @@ def topic(request, username):
             return JsonResponse(result)
     except Exception as e:
         result = cf.error_msg("599", msg=e)
+        return JsonResponse(result)
+
+
+def re_release(request,username):
+    if request.method == "GET":
+        return render(request, "release.html")
+
+@check_token("PSOT")
+def po_release(request,username):
+    try:
+        if request.method == "GET":
+            token = request.META.get("HTTP_AUTHORIZATION")
+            result = cf.error_msg("200")
+            return JsonResponse(result)
+        elif request.method == "POST":
+            result = cf.error_msg("200")
+            return JsonResponse(result)
+        else:
+            result = cf.error_msg("570")
+            return JsonResponse(result)
+    except Exception as e:
+        result = cf.error_msg("598", msg=e)
         return JsonResponse(result)

@@ -1,3 +1,5 @@
+var mybaseurl = "http://127.0.0.1:8000/"
+
 function makeHeader(blog_username, username){
     //blog_username 当前访问的博客的作者
     //username   登陆的用户
@@ -6,29 +8,28 @@ function makeHeader(blog_username, username){
     var user_info_url = '/' + blog_username + '/' + 'info'
     //登陆用户发博客url
     if (username){
-        var topic_release_url = '/' + username + '/' + 'topic/release'
+        var topic_release_url = '/release/release/' + username
+        var photo_url = '/photo/' + username
     }else{
         //没有登陆状态直接去登陆
-        var topic_release_url = '/login'
+        var photo_url = '/users/login'
+        var topic_release_url = '/users/login'
     }
 
     //访问博主的博客文章
-    var user_topics_url = '/' + blog_username + '/' + 'topics'
+    var user_topics_url = '/topics/'
+    // var user_topics_url = '/topics/' + blog_username + '/'
 
     var header_body = ''
     header_body += '<header id="header">';
     header_body += '<div class="menu">';
     header_body += ' <nav class="nav" id="topnav"> ';
-    header_body += '<h1 class="logo"><a href="/index"> ' + blog_username + '的博客</a></h1>';
+    header_body += '<h1 class="logo"><a href="/index/"> ' + blog_username + '的博客</a></h1>';
     header_body += '<li><a href="/index/">网站首页</a></li>';
     header_body += '<li>';
     header_body += '<a href=' + '"' + user_topics_url + '"' + '>文章列表</a>';
-    header_body += '<ul class="sub-nav">';
-    header_body += '<li><a href=' + '"' + user_topics_url + '?category=tec"' + '>技术</a></li>';
-    header_body += '<li><a href=' + '"' + user_topics_url + '?category=no-tec"' + '>非技术</a></li>';
-    header_body += '</ul>';
     header_body += '</li>';
-    header_body += '<li><a href="photo.html">我的相册</a> </li>';
+    header_body += '<li><a href=' + '"' + photo_url + '"' + '>我的相册</a> </li>';
     header_body += '<li><a href=' + '"' + topic_release_url + '"' + '>发表博客</a> </li>';
     header_body += '</nav>';
     header_body += '</div>';

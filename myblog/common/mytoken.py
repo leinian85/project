@@ -1,5 +1,6 @@
 import hashlib
-import jwt, time
+import jwt
+import time
 import common.config as cnf
 
 

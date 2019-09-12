@@ -32,12 +32,11 @@
     var blog_username = arrUrl[1].split('/')[2];
 
     if(query_set){
-        var get_url = "http://127.0.0.1:8000/topics/"+ blog_username + "?" + query_set;
+        var get_url = mybaseurl + "topics/"+ blog_username + "?" + query_set ;
     }else{
-        var get_url = "http://127.0.0.1:8000/topics/"+ blog_username;
-
+        var get_url = mybaseurl + "topics/"+ blog_username ;
     }
-
+    console.log(get_url)
     var html_body = '';
 
     $.ajax({
@@ -122,7 +121,7 @@
                 //添加删除事件
                 $('.delete').on('click', function(){
                     var delete_id = $(this).attr('data');
-                    var delete_url = "http://127.0.0.1:8000/v1/topics/"+ blog_username + "?" + 'topic_id=' + delete_id;
+                    var delete_url = mybaseurl + "v1/topics/"+ blog_username + "?" + 'topic_id=' + delete_id;
                     $.ajax({
                         // 请求方式
                         type:"delete",

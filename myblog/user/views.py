@@ -60,7 +60,8 @@ def register(request):
             result = {"code": 370, "error": cf.resmsg["370"]}
             return JsonResponse(result)
     except Exception as e:
-        result = {"code": 399, "error": cf.resmsg["399"]}
+        result = {"code": 399, "error": e}
+        # result = {"code": 399, "error": cf.resmsg["399"]}
         return JsonResponse(result)
 
 
