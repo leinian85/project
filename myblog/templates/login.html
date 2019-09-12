@@ -50,8 +50,8 @@
             if (200 == result.code){
                 window.localStorage.setItem('dnblog_token', result.data.token)
                 window.localStorage.setItem('dnblog_user', result.username)
-                alert('登陆成功')
-                refer_url = document.referrer
+                <!--alert('登陆成功')-->
+                <!--refer_url = document.referrer-->
                 //如果是项目内部的请求，回跳到上一步
                 <!--if (refer_url.search('127.0.0.1') != -1){-->
 					<!--console.log("1:"+refer_url)-->
