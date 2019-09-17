@@ -38,6 +38,7 @@ resmsg = {
 
 
     # topic
+    "517": "数据错误",
     "518": "数据错误",
     "570": "无效的请求",
     "598": "系统繁忙",
@@ -51,4 +52,4 @@ key = "myname"
 
 def error_msg(code,msg=None):
     error = msg if msg else resmsg.get(code)
-    return {"code":code,"error":error}
+    return {"code":code,"error":str(code)+error}

@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'user',
-    'btoken',
     'index',
     'topic',
 ]
@@ -83,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blog',
         'USER': 'root',
-        'PASSWORD': 'ln123456',
+        'PASSWORD': '123456',
         'PORT': '3306',
         'HOST': '127.0.0.1',
     }

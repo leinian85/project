@@ -166,7 +166,6 @@ def avatar(request,username):
         if not avatar:
             result = cf.error_msg("321")
             return JsonResponse(result)
-        print(avatar)
         request.user.avatar = avatar
         request.user.save()
         result = {"code": 200, "error": ""}

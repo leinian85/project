@@ -12,7 +12,7 @@
 	<script src="/static/js/jquery.easyfader.min.js"></script>
 	<script src="/static/js/wangEditor.js"></script>
 	<!--[if lt IE 9]>
-	<script src="js/modernizr.js"></script>
+	<script src="/js/modernizr.js"></script>
 	<![endif]-->
     <script src="/static/js/common.js"></script>
     <script src="/static/js/scrollReveal.js"></script>
@@ -34,7 +34,6 @@
       async: false,
       beforeSend: function(request) {
           request.setRequestHeader("Authorization", token);
-          console.log(token)
       },
       success:function (result) {
           if (200 == result.code){
@@ -109,7 +108,7 @@
                   // dataType
                   dataType:"json",
                   // url
-                  url:"http://127.0.0.1:8000/v1/topics/" + username,
+                  url: "/topics/" + username,
                   // 把JS的对象或数组序列化一个json 字符串
                   data:JSON.stringify(post_data),
                   // result 为请求的返回结果对象
@@ -119,7 +118,7 @@
                   success:function (result) {
                       if (200 == result.code){
                           alert("发布成功")
-                          window.location.href = '/' + username + '/topics'
+                          window.location.href = '/index/' + result.username;
                       }else{
                           alert(result.error)
                       }

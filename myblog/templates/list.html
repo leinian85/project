@@ -21,7 +21,6 @@
     token = window.localStorage.getItem('dnblog_token');
     username = window.localStorage.getItem('dnblog_user');
     var url = document.location.toString();
-    console.log(url)
     var query_split = url.split('?');
     var query_set = '';
     if(query_split.length > 1){
@@ -109,7 +108,7 @@
                 //绑定登出
                 loginOut()
                 //初始化scroll
-                scrollReveal.init();
+                scrollReveal.prototype.init();
 
                 //下拉菜单
                 $('.nav>li').hover(function () {

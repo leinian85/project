@@ -8,7 +8,7 @@ function makeHeader(blog_username, username){
     var user_info_url = '/' + blog_username + '/' + 'info'
     //登陆用户发博客url
     if (username){
-        var topic_release_url = '/release/release/' + username
+        var topic_release_url = '/topics/release/' + username
         var photo_url = '/photo/' + username
     }else{
         //没有登陆状态直接去登陆
