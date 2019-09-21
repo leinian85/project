@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 
 '''
-    V1 : 整合成函数
+    V2 : 多线程版本
 '''
 import requests
 from fake_useragent import UserAgent
 import os
 from lxml import etree
 import time
+from threading import Thread
 
 
 class TarenaSpider:
@@ -61,13 +62,12 @@ class TarenaSpider:
             self.go_next_dir(dir_one, is_dir)
             # time.sleep(random.randint(1, 3))
 
-
     # 下载文件
     def download(self, url):
         filename = self.dir + url[26:]
         name = url.split("/")[-1]
         if os.path.exists(filename):
-            # print("{} 文件已存在".format(name))
+            print("{} 文件已存在".format(name))
             return
 
         self.writh_file(filename, name, url)
@@ -112,20 +112,49 @@ class TarenaSpider:
         for item in self.new_file:
             print(item)
 
-    def run(self):
-        self.go_next_dir(self.baseurl, True)
+    def run(self, if_dir):
+        self.go_next_dir(self.baseurl, if_dir)
         self.show_message()
+
+    def get_fird_dir(self, url):
+        html = self.get_html(url, is_file=False).content.decode("utf-8", "ignore")
+        xpath_obj = etree.HTML(html)
+        first_dir = xpath_obj.xpath("//a/@href")
+        url_list = [self.baseurl + dir for dir in first_dir if dir not in self.ignore]
+        return url_list
 
 
 def now():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
+
+def run(baseurl, downdir, if_dir):
+    ts = TarenaSpider(baseurl, downdir)
+    ts.run(if_dir)
+
+
 def main():
     baseurl = "http://code.tarena.com.cn/WEBCode/wfd1905/"
     # 设置下载目录
     downdir = "/home/tarena/1905/"
-    # 设置忽略文件夹
+
     ts = TarenaSpider(baseurl, downdir)
-    ts.run()
+    linkList = ts.get_fird_dir(baseurl)
+
+    if_dir = False
+    t_list = []
+    for alink in linkList:
+        if alink.endswith("/"):
+            if_dir = True
+        else:
+            if_dir = False
+
+        t = Thread(target=run, args=(alink, downdir, if_dir))
+        t_list.append(t)
+        t.start()
+
+    for t in t_list:
+        t.join()
+
 
 main()

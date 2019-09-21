@@ -5,13 +5,14 @@ gitignore = ("__init__.py", "目录.md", "get_directory_txt.py", ".git", ".idea"
 
 
 class AutoDirectoty:
-    def __init__(self):
+    def __init__(self, path):
         self.id = 0
         self.files_dic = {}
         self.base_list = []  # 初始层级列表
         self.base_dir = {}  # 初始层级对应的字典
         self.father_id = {}
         self.directoty_txt = ""
+        self.path = path
 
     def writefile(self, path="."):
         with open(path + "/目录.md", "w", encoding='utf8') as f:
@@ -77,18 +78,22 @@ class AutoDirectoty:
             if name[0].startswith("/") and name[0].endswith("/"):
                 self.get_dir_child(name[1])
 
+    def show_message(self):
+        print("文件数:{}".format(self.id))
+
+    def run(self):
+        level = 1
+        id = 0
+        self.get_list(level, id, self.path)
+        self.dir_order()
+        self.get_dir()
+        self.writefile(self.path)
+        self.show_message()
+
 
 def main():
-    level = 1
-    id = 0
-    path = "/home/tarena/1905/AIDCode"
-    ad = AutoDirectoty()
-    ad.get_list(level, id, path)
-    ad.dir_order()
-    ad.get_dir()
-    ad.writefile(path)
-    print("文件数:{}".format(ad.id))
+    path = "/home/tarena/1905/WEBCode"
+    ad = AutoDirectoty(path)
+    ad.run()
 
-
-if __name__ == '__main__':
-    main()
+main()

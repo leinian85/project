@@ -1,6 +1,7 @@
 import requests
 from fake_useragent import UserAgent
 import time
+from threading import Thread
 
 
 class UploadImg:
@@ -51,6 +52,28 @@ def now():
 
 # ui = UploadImg("http://code.tarena.com.cn/AIDCode/aid1905/10_django/software/typora-setup-x64.exe")
 # ui = UploadImg("http://code.tarena.com.cn/WEBCode/wfd1905/DOM/day02/videos/bs/getElements vs querySelectorAll.mov")
-ui = UploadImg("http://code.tarena.com.cn/WEBCode/wfd1905/DOM/day01/day01 pm.zip")
-filename = ui.baseUrl.split("/")[-1]
-ui.writh_file(filename, filename, ui.baseUrl)
+
+url_list = [
+    "http://code.tarena.com.cn/AIDCode/aid1905/10_django/software/typora-setup-x64.exe",
+    "http://code.tarena.com.cn/WEBCode/wfd1905/DOM/day02/videos/bs/getElements vs querySelectorAll.mov",
+    "http://code.tarena.com.cn/WEBCode/wfd1905/DOM/day01/day01 pm.zip"
+]
+
+
+def main(url):
+    ui = UploadImg(url)
+    filename = ui.baseUrl.split("/")[-1]
+    ui.writh_file(filename, filename, ui.baseUrl)
+
+
+t_list = []
+for url in url_list:
+    t = Thread(target=main, args=(url,))
+    t_list.append(t)
+    t.start()
+
+print("=====================================")
+for t in t_list:
+    print("++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    t.join()
+    print("**************************************")
