@@ -63,7 +63,8 @@ ps:cors在线安装会造成django自动升级到2.0,会导致项目报错[todo]
 request.setRequestHeader("Authorization", token)
 ```
 
-
+15.我的疑问:
+(1) avatar = models.ImageField(upload_to='static/avatar/')  图片是怎么上传的,我代码中并没有写入的代码
 
 
 

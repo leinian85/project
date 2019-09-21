@@ -253,3 +253,8 @@ h1.t_nav { border-bottom: #bfbfbf 1px solid; font-size: 14px; font-weight: norma
 #register:hover{color:#fff;}
 #change_info{color: #E5F2F2;display: inline-block;position: absolute;top:35px;right:220px;}
 #change_info:hover{color:#fff;}
+
+.edit{color: #E5F2F2;display: inline-block;}
+.edit:hover{color:#666666;cursor:pointer;}
+.delete{color: #E5F2F2;display: inline-block;}
+.delete:hover{color:#666666;cursor:pointer;}

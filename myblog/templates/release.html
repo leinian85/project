@@ -118,7 +118,7 @@
                   success:function (result) {
                       if (200 == result.code){
                           alert("发布成功")
-                          window.location.href = '/index/' + result.username;
+                          window.location.href = '/index/' + username;
                       }else{
                           alert(result.error)
                       }

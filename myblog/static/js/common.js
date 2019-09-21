@@ -10,10 +10,12 @@ function makeHeader(blog_username, username){
     if (username){
         var topic_release_url = '/topics/release/' + username
         var photo_url = '/photo/' + username
+        var my_topic_url = '/index/'+ username
     }else{
         //没有登陆状态直接去登陆
         var photo_url = '/users/login'
         var topic_release_url = '/users/login'
+        var my_topic_url = '/users/login'
     }
 
     //访问博主的博客文章
@@ -30,6 +32,7 @@ function makeHeader(blog_username, username){
     header_body += '<a href=' + '"' + user_topics_url + '"' + '>文章列表</a>';
     header_body += '</li>';
     header_body += '<li><a href=' + '"' + photo_url + '"' + '>我的相册</a> </li>';
+    header_body += '<li><a href=' + '"' + my_topic_url + '"' + '>我的博客</a> </li>';
     header_body += '<li><a href=' + '"' + topic_release_url + '"' + '>发表博客</a> </li>';
     header_body += '</nav>';
     header_body += '</div>';

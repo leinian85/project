@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/static/images/bitbug_favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/static/imgs/tit.ico" type="image/x-icon" />
   <link href="/static/css/base.css" rel="stylesheet">
   <link href="/static/css/index.css" rel="stylesheet">
   <link href="/static/css/m.css" rel="stylesheet">
@@ -35,7 +35,6 @@
     }else{
         var get_url = mybaseurl + "topics/"+ blog_username ;
     }
-    console.log(get_url)
     var html_body = '';
 
     $.ajax({
@@ -92,8 +91,9 @@
                         html_body += '<li class="timer">' + created_time +  '</li>';
                         if(blog_username == username){
                             html_body += '<li class="" style="display:none"></li>';
-                            html_body += '<li class="" style="padding-left:20px">编辑</li>';
-                            html_body += '<li class="delete" style="padding-left:20px" data=' + topics[t].id +'>删除</li>';
+                            html_body += '<li class="edit" style="padding-left:20px">编辑</li>';
+                            html_body += '<li class="delete" style="padding-left:20px" data=' + topics[t].id
+                            +'>删除</li>';
                         }
                         html_body += '</ul>';
                         html_body += '</div>';
@@ -108,7 +108,7 @@
                 //绑定登出
                 loginOut()
                 //初始化scroll
-                scrollReveal.prototype.init();
+                <!--scrollReveal.prototype.init();-->
 
                 //下拉菜单
                 $('.nav>li').hover(function () {
@@ -120,7 +120,7 @@
                 //添加删除事件
                 $('.delete').on('click', function(){
                     var delete_id = $(this).attr('data');
-                    var delete_url = mybaseurl + "v1/topics/"+ blog_username + "?" + 'topic_id=' + delete_id;
+                    var delete_url = mybaseurl + "topics/"+ blog_username + "?" + 'topic_id=' + delete_id;
                     $.ajax({
                         // 请求方式
                         type:"delete",

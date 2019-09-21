@@ -46,7 +46,7 @@ def gettopic(login_username, username):
 
 
 # Create your views here.
-@check_token("POST")
+@check_token("POST","DELETE")
 def topic(request, username):
     try:
         if request.method == "GET":
@@ -90,6 +90,20 @@ def topic(request, username):
                 return JsonResponse(result)
             else:
                 result = cf.error_msg("517")
+                return JsonResponse(result)
+        elif request.method == "DELETE":
+            if request.user:
+                topic_id = request.GET.get("topic_id")
+                topic = Topic.objects.filter(id = topic_id,author_id = request.user.username)
+                if topic:
+                    topic.delete()
+                    result = {"code": 200, "error": ""}
+                    return JsonResponse(result)
+                else:
+                    result = cf.error_msg("515")
+                    return JsonResponse(result)
+            else:
+                result = cf.error_msg("516")
                 return JsonResponse(result)
         else:
             result = cf.error_msg("570")
