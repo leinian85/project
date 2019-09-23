@@ -9,25 +9,33 @@ import os
 from lxml import etree
 import time
 from threading import Thread
-from spider_tarena1 import *
 
+baseurl = "http://code.tarena.com.cn/BIGCode/big1904/"
+# 设置下载目录
+downdir = "/home/tarena/1905/"
+
+AUTH = ("tarenacode", "code_2014")
+INGORE = ["../"]
+
+FILESIZE = 1*1024*1024
+FILESIZELIST = "downlist"
+
+all_files_size = {}  # 记录下载过的文件大小
+un_done_files = []
+new_file = []
 
 class TarenaSpider:
-    all_files_size = {}  # 记录下载过的文件大小
-    un_done_files = []
-    new_file = []
-
     def __init__(self, url, dir):
         self.baseurl = url
         self.dir = dir
 
     @staticmethod
     def __set_files_size_dic():
-        with open(config.FILESIZELIST, "r") as f:
+        with open(FILESIZELIST, "r") as f:
             for line in f.readlines():
                 k = line.split("=")[0].strip()
-                v = line.split("=")[0].strip()
-                TarenaSpider.all_files_size[k] = v
+                v = line.split("=")[1].strip()
+                all_files_size[k] = v
 
     @staticmethod
     def __set_cnf():
@@ -36,7 +44,7 @@ class TarenaSpider:
     @staticmethod
     def __write_down_list(name,size):
         text ="{}={}\n".format(name,size)
-        with open(config.FILESIZELIST,"a") as f:
+        with open(FILESIZELIST,"a") as f:
             f.write(text)
 
     # 初始化公用配置
@@ -50,10 +58,10 @@ class TarenaSpider:
         if is_file:
             headers["Range"] = 'bytes=%d-' % size
             print("url-file:", url)
-            html = requests.get(url=url, auth=TarenaSpider.auth, headers=headers, stream=True)
+            html = requests.get(url=url, auth=AUTH, headers=headers, stream=True)
         else:
             print("url-dir:", url)
-            html = requests.get(url=url, auth=TarenaSpider.auth, headers=headers)
+            html = requests.get(url=url, auth=AUTH, headers=headers)
 
         return html
 
@@ -66,7 +74,7 @@ class TarenaSpider:
         r_obj = etree.HTML(html)
         r_list = r_obj.xpath("//a/@href")
         for urlone in r_list:
-            if urlone in TarenaSpider.ignore:
+            if urlone in INGORE:
                 continue
 
             dir_one = url + urlone
@@ -78,7 +86,7 @@ class TarenaSpider:
                 dir = self.dir + dir_one[26:]
                 is_dir = True
             else:
-                dir = self.dir + "/".join(dir_one[26:].split("/")[:-2])
+                dir = self.dir + "/".join(dir_one[26:].split("/")[:-1])
                 is_dir = False
 
             if not os.path.exists(dir):
@@ -89,15 +97,18 @@ class TarenaSpider:
 
     # 下载文件
     def download(self, url):
-        filename = self.dir + url[26:]
+        filename = self.dir + "/".join(url.split("://")[1].split("/")[1:])
         name = url.split("/")[-1]
-        file_size = TarenaSpider.all_files_size.get(name, 0)
+        file_size = int(all_files_size.get(filename, "0"))
         if_continue = False
         # 判断是否需要续传,大于等于配置的大小就需要续传
-        if file_size >= config.FILESIZE:
+        if file_size >= FILESIZE:
             if_continue = True
 
-        local_file_size = os.path.getsize(name)
+        if os.path.exists(filename):
+            local_file_size = int(os.path.getsize(filename))
+        else:
+            local_file_size = 0
 
         if if_continue:
             # 判断需要续传的文件是否下载完成
@@ -108,26 +119,29 @@ class TarenaSpider:
             if os.path.exists(filename):
                 return
 
-        self.writh_file(filename, name, url, local_file_size, if_continue)
+        self.writh_file(filename, name, url, local_file_size)
 
     # 写入文件
-    def writh_file(self, d_filename, filename, url, local_file_size, if_continue):
+    def writh_file(self, d_filename, filename, url, local_file_size):
         '''
         :param d_filename: 文件的下载路径
         :param filename: 文件名
         :param url: 文件下载的url
         '''
-        # 记录不续传的文件,下载异常的要删除
-        if not if_continue:
-            self.un_done_files.append(d_filename)
 
+
+        if_continue = False
         try:
             with open(d_filename, 'ab') as f:
                 with self.get_html(url=url, is_file=True, size=local_file_size) as res:
-                    siza_all = res.headers.get("Content-Length")
-                    if if_continue:
+                    siza_all = int(res.headers.get("Content-Length"))
+                    if siza_all >= FILESIZE:
+                        if_continue = True
                         TarenaSpider.__write_down_list(d_filename,siza_all)
-                    size_sum = 0
+                    else:
+                        # 记录不续传的文件,下载异常的要删除
+                        un_done_files.append(d_filename)
+                    size_sum = local_file_size
                     size_temp = 0
                     starttime = time.time()
                     for chunk in res.iter_content(chunk_size=1024):
@@ -145,10 +159,10 @@ class TarenaSpider:
                                 self.show_result(filename, p, speed)
                                 size_temp = 0
                     self.show_result(filename, 100)
-                    self.new_file.append(url)
+                    new_file.append(url)
 
-            if not if_continue:
-                self.un_done_files.remove(d_filename)
+                    if not if_continue:
+                        un_done_files.remove(d_filename)
         except:
             pass
 
@@ -158,10 +172,12 @@ class TarenaSpider:
         else:
             print(now() + " [" + name + "] %.2f" % (p) + "%" + " 下载完成")
 
+    def show_dir(self):
+        print("下载完成,文件位置:{}".format(self.dir))
+
     def show_message(self):
-        print("全部下载完成,文件位置:{}".format(self.dir))
-        print("新增文件{}个:".format(len(self.new_file)))
-        for item in self.new_file:
+        print("新增文件{}个:".format(len(new_file)))
+        for item in new_file:
             print(item)
 
     def run(self, if_dir):
@@ -171,7 +187,7 @@ class TarenaSpider:
         html = self.get_html(url, is_file=False).content.decode("utf-8", "ignore")
         xpath_obj = etree.HTML(html)
         first_dir = xpath_obj.xpath("//a/@href")
-        url_list = [self.baseurl + dir for dir in first_dir if dir not in TarenaSpider.ignore]
+        url_list = [self.baseurl + dir for dir in first_dir if dir not in INGORE]
         return url_list
 
 
@@ -185,13 +201,30 @@ def run(baseurl, downdir, if_dir):
     ts.run(if_dir)
     print("{} 提取完成.".format(baseurl))
 
+def run_one_dir():
+    ts = TarenaSpider(baseurl, downdir)
+
+    try:
+        ts.data_init()
+        ts.run(True)
+        ts.show_dir()
+        ts.show_message()
+
+        if un_done_files:
+            print("正在删除未下载完成的文件...")
+            for file in un_done_files:
+                os.remove(file)
+    except Exception as e:
+        ts.show_message()
+        if un_done_files:
+            print("正在删除未下载完成的文件...")
+            for file in un_done_files:
+                os.remove(file)
+        print("程序终止")
 
 def main():
-    baseurl = "http://code.tarena.com.cn/BIGCode/big1904/04-Linux/day02/"
-    # 设置下载目录
-    downdir = "./"
-
     ts = TarenaSpider(baseurl, downdir)
+    ts.data_init()
     try:
         linkList = ts.get_fird_dir(baseurl)
 
@@ -212,16 +245,18 @@ def main():
 
         ts.show_message()
 
-        if ts.un_done_files:
+        if un_done_files:
             print("正在删除未下载完成的文件...")
-            for file in ts.un_done_files:
+            for file in un_done_files:
                 os.remove(file)
-    except:
-        if ts.un_done_files:
+    except Exception as e:
+        print(e)
+        if un_done_files:
             print("正在删除未下载完成的文件...")
-            for file in ts.un_done_files:
+            for file in un_done_files:
                 os.remove(file)
         print("程序终止")
 
 
 main()
+# run_one_dir()

@@ -71,14 +71,18 @@ def main(url):
     ui.writh_file(filename, filename, ui.baseUrl)
 
 
-t_list = []
-for url in url_list:
-    t = Thread(target=main, args=(url,))
-    t_list.append(t)
-    t.start()
+# t_list = []
+# for url in url_list:
+#     t = Thread(target=main, args=(url,))
+#     t_list.append(t)
+#     t.start()
+#
+# print("=====================================")
+# for t in t_list:
+#     print("++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+#     t.join(100)
+#     print("**************************************")
 
-print("=====================================")
-for t in t_list:
-    print("++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-    t.join(100)
-    print("**************************************")
+a = 'http://code.tarena.com.cn/BIGCode/big1904/01-javaSE/API.zip'
+print("/".join(a[26:].split("/")[:-1]))
+print(a[26:].split("/")[:-2])
