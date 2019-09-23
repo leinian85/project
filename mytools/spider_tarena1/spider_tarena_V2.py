@@ -12,13 +12,15 @@ from threading import Thread
 
 
 class TarenaSpider:
+    un_done_files = []
+    new_file = []
     def __init__(self, url, dir):
         self.baseurl = url
         self.auth = ("tarenacode", "code_2014")
         self.dir = dir
         self.ignore = ["../"]
         self.ua = UserAgent()
-        self.new_file = []
+
 
     def get_html(self, url, is_file=False):
         headers = {"User-Agent": self.ua.random}
@@ -67,7 +69,7 @@ class TarenaSpider:
         filename = self.dir + url[26:]
         name = url.split("/")[-1]
         if os.path.exists(filename):
-            print("{} 文件已存在".format(name))
+            # print("{} 文件已存在".format(name))
             return
 
         self.writh_file(filename, name, url)
@@ -79,26 +81,31 @@ class TarenaSpider:
         :param filename: 文件名
         :param url: 文件下载的url
         '''
-        with open(d_filename, 'wb') as f:
-            with self.get_html(url=url, is_file=True) as res:
-                siza_all = res.headers.get("Content-Length")
-                size_sum = 0
-                size_temp = 0
-                starttime = time.time()
-                for chunk in res.iter_content(chunk_size=1024):
-                    if chunk:
-                        f.write(chunk)
-                        size_sum += len(chunk)
-                        size_temp += len(chunk)
-                        time_t = time.time() - starttime
-                        if time_t > 1:
-                            starttime = time.time()
-                            p = (size_sum / int(siza_all)) * 100
-                            speed = size_temp / time_t / 1024
-                            self.show_result(filename, p, speed)
-                            size_temp = 0
-                self.show_result(filename, 100)
-                self.new_file.append(url)
+        self.un_done_files.append(d_filename)
+        try:
+            with open(d_filename, 'wb') as f:
+                with self.get_html(url=url, is_file=True) as res:
+                    siza_all = res.headers.get("Content-Length")
+                    size_sum = 0
+                    size_temp = 0
+                    starttime = time.time()
+                    for chunk in res.iter_content(chunk_size=1024):
+                        if chunk:
+                            f.write(chunk)
+                            size_sum += len(chunk)
+                            size_temp += len(chunk)
+                            time_t = time.time() - starttime
+                            if time_t > 1:
+                                starttime = time.time()
+                                p = (size_sum / int(siza_all)) * 100
+                                speed = size_temp / time_t / 1024
+                                self.show_result(filename, p, speed)
+                                size_temp = 0
+                    self.show_result(filename, 100)
+                    self.new_file.append(url)
+            self.un_done_files.remove(d_filename)
+        except:
+            pass
 
     def show_result(self, name, p, speed=None):
         if speed:
@@ -114,7 +121,6 @@ class TarenaSpider:
 
     def run(self, if_dir):
         self.go_next_dir(self.baseurl, if_dir)
-        self.show_message()
 
     def get_fird_dir(self, url):
         html = self.get_html(url, is_file=False).content.decode("utf-8", "ignore")
@@ -129,32 +135,49 @@ def now():
 
 
 def run(baseurl, downdir, if_dir):
+    print("{} 开始提取...".format(baseurl))
     ts = TarenaSpider(baseurl, downdir)
     ts.run(if_dir)
+    print("{} 提取完成.".format(baseurl))
 
 
 def main():
-    baseurl = "http://code.tarena.com.cn/WEBCode/wfd1905/"
+
+    baseurl = "http://code.tarena.com.cn/AIDCode/aid1905/"
     # 设置下载目录
     downdir = "/home/tarena/1905/"
 
     ts = TarenaSpider(baseurl, downdir)
-    linkList = ts.get_fird_dir(baseurl)
+    try:
+        linkList = ts.get_fird_dir(baseurl)
 
-    if_dir = False
-    t_list = []
-    for alink in linkList:
-        if alink.endswith("/"):
-            if_dir = True
-        else:
-            if_dir = False
+        if_dir = False
+        t_list = []
+        for alink in linkList:
+            if alink.endswith("/"):
+                if_dir = True
+            else:
+                if_dir = False
 
-        t = Thread(target=run, args=(alink, downdir, if_dir))
-        t_list.append(t)
-        t.start()
+            t = Thread(target=run, args=(alink, downdir, if_dir))
+            t_list.append(t)
+            t.start()
 
-    for t in t_list:
-        t.join()
+        for t in t_list:
+            t.join()
+
+        ts.show_message()
+
+        if ts.un_done_files:
+            print("正在删除未下载完成的文件...")
+            for file in ts.un_done_files:
+                os.remove(file)
+    except:
+        if ts.un_done_files:
+            print("正在删除未下载完成的文件...")
+            for file in ts.un_done_files:
+                os.remove(file)
+        print("程序终止")
 
 
 main()

@@ -2,7 +2,7 @@ import requests
 from fake_useragent import UserAgent
 import time
 from threading import Thread
-
+import os
 
 class UploadImg:
     def __init__(self, url):
@@ -19,25 +19,30 @@ class UploadImg:
         return res
 
     def writh_file(self, d_filename, filename, url):
-        with open(d_filename, 'wb') as f:
-            with self.get_file(url=url) as res:
-                siza_all = res.headers.get("Content-Length")
-                size_sum = 0
-                size_temp = 0
-                starttime = time.time()
-                for chunk in res.iter_content(chunk_size=1024):
-                    if chunk:
-                        f.write(chunk)
-                        size_sum += len(chunk)
-                        size_temp += len(chunk)
-                        time_t = time.time() - starttime
-                        if time_t > 1:
-                            starttime = time.time()
-                            p = (size_sum / int(siza_all)) * 100
-                            speed = size_temp / time_t / 1024
-                            self.show_result(filename, p, speed)
-                            size_temp = 0
-                self.show_result(filename, 100)
+        try:
+            with open(d_filename, 'ab') as f:
+                os.path.getsize(d_filename)
+                with self.get_file(url=url) as res:
+                    siza_all = res.headers.get("Content-Length")
+                    size_sum = 0
+                    size_temp = 0
+                    starttime = time.time()
+                    for chunk in res.iter_content(chunk_size=1024):
+                        if chunk:
+                            f.write(chunk)
+                            size_sum += len(chunk)
+                            size_temp += len(chunk)
+                            time_t = time.time() - starttime
+                            if time_t > 1:
+                                starttime = time.time()
+                                p = (size_sum / int(siza_all)) * 100
+                                speed = size_temp / time_t / 1024
+                                self.show_result(filename, p, speed)
+                                size_temp = 0
+                    self.show_result(filename, 100)
+        except Exception as e:
+            print(d_filename)
+            os.remove(d_filename)
 
     def show_result(self, name, p, speed=None):
         if speed:
@@ -75,5 +80,5 @@ for url in url_list:
 print("=====================================")
 for t in t_list:
     print("++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-    t.join()
+    t.join(100)
     print("**************************************")
