@@ -9,7 +9,7 @@ import os
 from lxml import etree
 import time
 from threading import Thread
-from spider_tarena import config
+from spider_tarena1 import *
 
 
 class TarenaSpider:
@@ -36,7 +36,7 @@ class TarenaSpider:
     @staticmethod
     def __write_down_list(name,size):
         text ="{}={}\n".format(name,size)
-        with open(config.FILESIZELIST, "a") as f:
+        with open(config.FILESIZELIST,"a") as f:
             f.write(text)
 
     # 初始化公用配置
