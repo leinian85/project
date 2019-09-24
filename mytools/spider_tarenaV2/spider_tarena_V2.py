@@ -55,7 +55,7 @@ class TarenaSpider:
                 dir = self.dir + dir_one[26:]
                 is_dir = True
             else:
-                dir = self.dir + "/".join(dir_one[26:].split("/")[:-2])
+                dir = self.dir + "/".join(dir_one[26:].split("/")[:-1])
                 is_dir = False
 
             if not os.path.exists(dir):

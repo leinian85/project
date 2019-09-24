@@ -17,18 +17,24 @@ downdir = "/home/tarena/1905/"
 AUTH = ("tarenacode", "code_2014")
 INGORE = ["../"]
 
-FILESIZE = 1*1024*1024
+FILESIZE = 1 * 1024 * 1024
 FILESIZELIST = "downlist"
 
 all_files_size = {}  # 记录下载过的文件大小
 un_done_files = []
 new_file = []
 
+
 class TarenaSpider:
     def __init__(self, url, dir):
+        '''
+        :param url: 基础url ,用于拼接
+        :param dir: 下载基础目录
+        '''
         self.baseurl = url
         self.dir = dir
 
+    # 从文件获取要下载的文件的大小,用于判断是否需要继续下载,已经下载过的文件会将文件大小写入FILESIZELIST
     @staticmethod
     def __set_files_size_dic():
         with open(FILESIZELIST, "r") as f:
@@ -41,18 +47,27 @@ class TarenaSpider:
     def __set_cnf():
         TarenaSpider.ua = UserAgent()
 
+    # 如果需要断点续传(大文件)的文件,下载前将文件大小写入FILESIZELIST
     @staticmethod
-    def __write_down_list(name,size):
-        text ="{}={}\n".format(name,size)
-        with open(FILESIZELIST,"a") as f:
+    def __write_down_list(name, size):
+        text = "{}={}\n".format(name, size)
+        with open(FILESIZELIST, "a") as f:
             f.write(text)
 
-    # 初始化公用配置
-    def data_init(self):
-        self.__set_files_size_dic()
-        self.__set_cnf()
+    # 初始化公用配置,给外部调用,用于多线程时,多个子线程共用一个配置
+    @staticmethod
+    def data_init():
+        TarenaSpider.__set_files_size_dic()
+        TarenaSpider.__set_cnf()
 
+    # 获取页面的响应,如果是文件,就下载
     def get_html(self, url, is_file=False, size=0):
+        '''
+        :param url: 请求的url
+        :param is_file: 是否是文件
+        :param size: 本地文件大小
+        :return:
+        '''
         headers = {"User-Agent": TarenaSpider.ua.random}
 
         if is_file:
@@ -128,8 +143,6 @@ class TarenaSpider:
         :param filename: 文件名
         :param url: 文件下载的url
         '''
-
-
         if_continue = False
         try:
             with open(d_filename, 'ab') as f:
@@ -137,7 +150,7 @@ class TarenaSpider:
                     siza_all = int(res.headers.get("Content-Length"))
                     if siza_all >= FILESIZE:
                         if_continue = True
-                        TarenaSpider.__write_down_list(d_filename,siza_all)
+                        TarenaSpider.__write_down_list(d_filename, siza_all)
                     else:
                         # 记录不续传的文件,下载异常的要删除
                         un_done_files.append(d_filename)
@@ -180,8 +193,9 @@ class TarenaSpider:
         for item in new_file:
             print(item)
 
-    def run(self, if_dir):
-        self.go_next_dir(self.baseurl, if_dir)
+    def run(self, url, if_dir):
+        self.go_next_dir(url, if_dir)
+
 
     def get_fird_dir(self, url):
         html = self.get_html(url, is_file=False).content.decode("utf-8", "ignore")
@@ -191,6 +205,7 @@ class TarenaSpider:
         return url_list
 
 
+
 def now():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
@@ -198,15 +213,23 @@ def now():
 def run(baseurl, downdir, if_dir):
     print("{} 开始提取...".format(baseurl))
     ts = TarenaSpider(baseurl, downdir)
-    ts.run(if_dir)
+    ts.run(baseurl, if_dir)
     print("{} 提取完成.".format(baseurl))
+
 
 def run_one_dir():
     ts = TarenaSpider(baseurl, downdir)
 
     try:
         ts.data_init()
-        ts.run(True)
+        linkList = ts.get_fird_dir(baseurl)
+
+        for alink in linkList:
+            if alink.endswith("/"):
+                if_dir = True
+            else:
+                if_dir = False
+            ts.run(alink, if_dir)
         ts.show_dir()
         ts.show_message()
 
@@ -221,6 +244,7 @@ def run_one_dir():
             for file in un_done_files:
                 os.remove(file)
         print("程序终止")
+
 
 def main():
     ts = TarenaSpider(baseurl, downdir)
@@ -242,7 +266,7 @@ def main():
 
         for t in t_list:
             t.join()
-
+        ts.show_dir()
         ts.show_message()
 
         if un_done_files:
@@ -250,7 +274,7 @@ def main():
             for file in un_done_files:
                 os.remove(file)
     except Exception as e:
-        print(e)
+        ts.show_message()
         if un_done_files:
             print("正在删除未下载完成的文件...")
             for file in un_done_files:
@@ -258,5 +282,9 @@ def main():
         print("程序终止")
 
 
-main()
+# main()
 # run_one_dir()
+
+ts = TarenaSpider()
+ts.data_init()
+

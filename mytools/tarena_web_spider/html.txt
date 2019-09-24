@@ -1,0 +1,2717 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TTS学习中心</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="http://tts.tmooc.cn/private/ttsfront/css/style.css">
+</head>
+<body>
+    <div class="page-header" id="headerDiv">
+        <!-- js加载 -->
+    </div>
+    <div class="page-body">
+        <div class="md2017082402lty">
+            <nav class="banner-top-lty">
+                <div class="container">
+                    <div class="begin-study-lty pull-left">
+                        <a href="javascript:;" onclick="startStudy()">
+                            <img src="http://tts.tmooc.cn/private/ttsfront/img/begin_study.png" alt="">
+                        </a>
+                    </div>
+                    <ul class="class-info-lty pull-left clearfix" id="studyMsgUl">
+                        <li>
+                            <p>开班时间</p>
+                            <span id="classStartTime"></span>
+                        </li>
+                        <li>
+                            <p>项目经理</p>
+                            <span id="pmName"></span>
+                        </li>
+                        <li>
+                            <p>职业发展</p>
+                            <span id="classTeacherName"></span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="container wipper-960-190">
+            <input type="hidden" id="version" value="AIDTN201903">
+                <div class="col-960 md2017110202lty">
+                <!-- 循环各个阶段 -->
+                <!-- 开始循环 ,bigStage是大阶段开始-->
+                    	<!-- courseStage是小阶段 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="11"></a>
+                       <span class="headline-content">PYTHON_BASE</span>
+                    	</h2>
+                    	
+                    <div id="stage718882" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				人工智能解读
+                                   					、
+                                   				 Python简介
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672192&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				数据基本运算
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672191&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				选择语句
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672190&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				循环语句
+                                   					、
+                                   				跳转语句
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672189&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				字符串
+                                   					、
+                                   				列表
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672188&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>06：
+                                   				元组
+                                   					、
+                                   				字典
+                                   					、
+                                   				集合
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672187&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>07：
+                                   				函数
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672186&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>08：
+                                   				函数参数
+                                   					、
+                                   				作用域
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672185&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="12"></a>
+                       <span class="headline-content">PYTHON_OO</span>
+                    	</h2>
+                    	
+                    <div id="stage718906" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				面向对象概述
+                                   					、
+                                   				类和对象
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672184&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				封装
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672183&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				设计思想
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672182&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				继承
+                                   					、
+                                   				多态
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672181&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				设计原则
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672180&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="13"></a>
+                       <span class="headline-content">PYTHON_CORE</span>
+                    	</h2>
+                    	
+                    <div id="stage718919" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				模块
+                                   					、
+                                   				包
+                                   					、
+                                   				异常处理
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672179&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				迭代
+                                   					、
+                                   				生成器
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672178&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				Lambda 表达式
+                                   					、
+                                   				高阶函数
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672177&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				闭包
+                                   					、
+                                   				装饰器
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672176&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="14"></a>
+                       <span class="headline-content">PYTHON_PROJECT</span>
+                    	</h2>
+                    	
+                    <div id="stage718933" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				阶段项目
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=672175&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	<!-- 开始循环 ,bigStage大阶段结束-->
+                    	<!-- courseStage是小阶段 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="21"></a>
+                       <span class="headline-content">DATA_STRUCT</span>
+                    	</h2>
+                    	
+                    <div id="stage720765" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				数据结构
+                                   					、
+                                   				链表操作
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674100&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				二叉树
+                                   					、
+                                   				查找排序算法
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674099&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="22"></a>
+                       <span class="headline-content">LINUX</span>
+                    	</h2>
+                    	
+                    <div id="stage720772" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				Linux使用
+                                   					、
+                                   				文件IO
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674098&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="23"></a>
+                       <span class="headline-content">PYTHON_NET</span>
+                    	</h2>
+                    	
+                    <div id="stage720776" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				网络基础
+                                   					、
+                                   				TCP编程
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674097&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				UDP编程
+                                   					、
+                                   				套接字属性
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674096&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				广播
+                                   					、
+                                   				HTTP协议
+                                   					、
+                                   				struct模块
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674095&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="24"></a>
+                       <span class="headline-content">CONCURRENT</span>
+                    	</h2>
+                    	
+                    <div id="stage720787" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				多任务编程
+                                   					、
+                                   				fork多进程
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674094&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				网络聊天室
+                                   					、
+                                   				multiprocessing进程
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674093&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				进程间通信
+                                   					、
+                                   				同步互斥
+                                   					、
+                                   				threading线程
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674092&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				IO模型
+                                   					、
+                                   				协程编程
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674091&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				多进程并发
+                                   					、
+                                   				ftp文件服务器
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674090&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>06：
+                                   				多线程并发
+                                   					、
+                                   				HTTPServer 2.0
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674089&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="25"></a>
+                       <span class="headline-content">PYTHON_RE</span>
+                    	</h2>
+                    	
+                    <div id="stage720807" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				正则表达式
+                                   					、
+                                   				re模块
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674088&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="26"></a>
+                       <span class="headline-content">MYSQL_BASE</span>
+                    	</h2>
+                    	
+                    <div id="stage720811" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				数据库基础
+                                   					、
+                                   				数据表设计
+                                   					、
+                                   				数据库数据表创建
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674087&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				数据类型
+                                   					、
+                                   				高级查询
+                                   					、
+                                   				增删改查操作
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674086&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="27"></a>
+                       <span class="headline-content">NETWORK_PROJECT</span>
+                    	</h2>
+                    	
+                    <div id="stage720820" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				GIT使用
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674085&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				电子词典项目
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674084&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				HTTP Server 3.0
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=674083&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	<!-- 开始循环 ,bigStage大阶段结束-->
+                    	<!-- courseStage是小阶段 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="31"></a>
+                       <span class="headline-content">HTMLCSS</span>
+                    	</h2>
+                    	
+                    <div id="stage725918" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				Web前端介绍
+                                   					、
+                                   				HTML介绍及基本结构
+                                   					、
+                                   				HTML常用标签
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679325&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				CSS介绍及使用
+                                   					、
+                                   				常用选择器介绍
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679324&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				CSS盒模型
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679323&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				浮动布局
+                                   					、
+                                   				定位布局
+                                   					、
+                                   				其他属性
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679322&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="32"></a>
+                       <span class="headline-content">JAVASCRIPT</span>
+                    	</h2>
+                    	
+                    <div id="stage725932" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				Javascript介绍及使用
+                                   					、
+                                   				数据类型及转换
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679321&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				运算符使用
+                                   					、
+                                   				if与switch语句
+                                   					、
+                                   				循环
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679320&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				函数
+                                   					、
+                                   				数组
+                                   					、
+                                   				字符串
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679319&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				DOM操作
+                                   					、
+                                   				事件处理
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679318&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				jQuery使用
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679317&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="33"></a>
+                       <span class="headline-content">WEBPROJECT01</span>
+                    	</h2>
+                    	
+                    <div id="stage725949" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				商城项目
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679316&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				商城项目
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679315&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="34"></a>
+                       <span class="headline-content">MYSQL_CORE</span>
+                    	</h2>
+                    	
+                    <div id="stage725954" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				外键
+                                   					、
+                                   				索引
+                                   					、
+                                   				事务
+                                   					、
+                                   				关联关系
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679314&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				子查询
+                                   					、
+                                   				数据库优化
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679313&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				PyMYSQL使用
+                                   					、
+                                   				持久化层的实现
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679312&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="35"></a>
+                       <span class="headline-content">DJANGO</span>
+                    	</h2>
+                    	
+                    <div id="stage725966" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				Python工具使用
+                                   					、
+                                   				WEB与服务器
+                                   					、
+                                   				框架
+                                   					、
+                                   				MVC与MTV模式
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679311&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				Django介绍
+                                   					、
+                                   				Django中的应用
+                                   					、
+                                   				应用的URL路由配置
+                                   					、
+                                   				模板的设置
+                                   					、
+                                   				模板的加载方式
+                                   					、
+                                   				url()中的name参数
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679310&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				模板中的语法
+                                   					、
+                                   				模型
+                                   					、
+                                   				ORM
+                                   					、
+                                   				创建和使用模型
+                                   					、
+                                   				配置数据库
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679309&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				编写Models
+                                   					、
+                                   				数据字段和字段选项
+                                   					、
+                                   				数据的导入和导出及版本切换
+                                   					、
+                                   				通过模型增加
+                                   					、
+                                   				查询
+                                   					、
+                                   				修改
+                                   					、
+                                   				删除数据
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679308&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				原生数据库操作
+                                   					、
+                                   				用后台管理Models
+                                   					、
+                                   				基本管理
+                                   					、
+                                   				高级管理
+                                   					、
+                                   				一对一映射查询
+                                   					、
+                                   				一对多映射查询
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679307&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>06：
+                                   				多对多映射查询
+                                   					、
+                                   				自定义查询对象
+                                   					、
+                                   				HttpRequest使用
+                                   					、
+                                   				HttpResponds
+                                   					、
+                                   				csrf跨站点攻击
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679306&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>07：
+                                   				文件上传
+                                   					、
+                                   				数据分页
+                                   					、
+                                   				中间件
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679305&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>08：
+                                   				cookies
+                                   					、
+                                   				session会话
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679304&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="36"></a>
+                       <span class="headline-content">AJAX</span>
+                    	</h2>
+                    	
+                    <div id="stage726013" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				AJAX介绍
+                                   					、
+                                   				同步与异步
+                                   					、
+                                   				异步对象XMLHttpRequest
+                                   					、
+                                   				XHR的成员
+                                   					、
+                                   				使用AJAX发送GET请求
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679303&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				使用AJAX发送POST请求
+                                   					、
+                                   				JSON介绍
+                                   					、
+                                   				JSON在前后端的处理
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679302&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				使用jQuery实现AJAX操作
+                                   					、
+                                   				跨域
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679301&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="37"></a>
+                       <span class="headline-content">WEBPROJECT02</span>
+                    	</h2>
+                    	
+                    <div id="stage726027" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				商城项目
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679300&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				商城项目
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679299&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				商城项目
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679298&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				商城项目
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679297&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				商城项目
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679296&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>06：
+                                   				商城项目
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=679295&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	<!-- 开始循环 ,bigStage大阶段结束-->
+                    	<!-- courseStage是小阶段 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="41"></a>
+                       <span class="headline-content">REDIS</span>
+                    	</h2>
+                    	
+                    <div id="stage734684" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				NoSQL简介、Redis安装与配置
+                                   					、
+                                   				特点与应用
+                                   					、
+                                   				数据类型
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687805&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				Redis发布订阅
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687804&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				Python与Redis交互
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687803&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="42"></a>
+                       <span class="headline-content">SPIDER</span>
+                    	</h2>
+                    	
+                    <div id="stage734693" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				爬虫介绍、分类及用途、robots协议
+                                   					、
+                                   				urllib基本使用
+                                   					、
+                                   				re模块
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687802&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				正则表达式精细抓取文本信息
+                                   					、
+                                   				数据持久化存储
+                                   					、
+                                   				requests模块
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687801&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				requests模块高级
+                                   					、
+                                   				非结构化数据抓取
+                                   					、
+                                   				User-Agent及代理IP应对反爬
+                                   					、
+                                   				xpath数据提取
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687800&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				lxml解析库使用
+                                   					、
+                                   				Cookie模拟登陆
+                                   					、
+                                   				抓取并分析JS应对反爬
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687799&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				Ajax动态加载数据抓取
+                                   					、
+                                   				json模块
+                                   					、
+                                   				selenium+phantomjs chromedriver geckodriver
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687798&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>06：
+                                   				多线程爬虫
+                                   					、
+                                   				BeautifulSoup模块
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687797&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>07：
+                                   				Scrapy框架介绍、配置安装
+                                   					、
+                                   				Scrapy框架数据抓取流程
+                                   					、
+                                   				Scrapy框架Spider类
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687796&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>08：
+                                   				Scrapy中数据持久化存储
+                                   					、
+                                   				多级子页面爬取
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687795&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>09：
+                                   				Scrapy shell
+                                   					、
+                                   				CrawlSpider类
+                                   					、
+                                   				分布式爬虫
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687794&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>010：
+                                   				分布式爬虫案例
+                                   					、
+                                   				机器视觉与tesseract
+                                   					、
+                                   				验证码识别
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687793&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="43"></a>
+                       <span class="headline-content">TRAININGCAMP</span>
+                    	</h2>
+                    	
+                    <div id="stage734733" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				就业特训营01
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687792&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				就业特训营02
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687791&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				就业特训营03
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687790&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				就业特训营04
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687789&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				就业特训营05
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=687788&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	<!-- 开始循环 ,bigStage大阶段结束-->
+                    	<!-- courseStage是小阶段 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="51"></a>
+                       <span class="headline-content">TORNADO</span>
+                    	</h2>
+                    	
+                    <div id="stage738201" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				TORNADO 01
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691226&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				TORNADO 02
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691225&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				TORNADO 03
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691224&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				TORNADO 04
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691223&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				TORNADO 05
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691222&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>06：
+                                   				TORNADO 06
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691221&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="52"></a>
+                       <span class="headline-content">FLASK</span>
+                    	</h2>
+                    	
+                    <div id="stage738214" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				FLASK 01
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691220&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				FLASK 02
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691219&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				FLASK 03
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691218&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				FLASK 04
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691217&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				FLASK 05
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691216&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>06：
+                                   				FLASK 06
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691215&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="53"></a>
+                       <span class="headline-content">AUTOMATED_TESTING</span>
+                    	</h2>
+                    	
+                    <div id="stage740844" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				Windows操作系统及网络基础 01
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY01/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693904&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				Windows操作系统及网络基础 02
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY02/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693903&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				Windows操作系统及网络基础 03
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY03/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693902&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				测试基础理论 01
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY04/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693901&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				测试基础理论 02
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY05/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693900&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>06：
+                                   				测试基础理论 03
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY06/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693899&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>07：
+                                   				测试基础理论 04
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY07/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693898&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>08：
+                                   				测试基础理论 05
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY08/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693897&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>09：
+                                   				测试基础理论 06
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY09/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693896&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>010：
+                                   				测试基础理论 07
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY10/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693895&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>011：
+                                   				测试基础理论 08
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY11/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693894&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>012：
+                                   				测试基础理论 09
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY12/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693893&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>013：
+                                   				测试基础理论 10
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY13/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693892&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>014：
+                                   				测试基础理论 11
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY14/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693891&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>015：
+                                   				测试基础理论 12
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY15/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693890&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>016：
+                                   				测试基础理论 13
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY16/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693889&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>017：
+                                   				测试基础理论 14
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY17/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693888&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>018：
+                                   				测试基础理论 15
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY18/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693887&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>019：
+                                   				测试项目-办公自动化系统 01
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY19/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693886&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>020：
+                                   				测试项目-办公自动化系统 02
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY20/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693935&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>021：
+                                   				测试项目-办公自动化系统 03
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY21/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693934&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>022：
+                                   				测试项目-办公自动化系统 04
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY22/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693933&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>023：
+                                   				测试项目-办公自动化系统 05
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="http://tts.tmooc.cn/ttsPage/AID/AIDTN201903/AUTOMATED_TESTING/DAY23/COURSE/ppt.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693932&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>024：
+                                   				使用Python实现Selenium自动化测试 01
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693931&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>025：
+                                   				使用Python实现Selenium自动化测试 02
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693930&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>026：
+                                   				使用Python实现Selenium自动化测试 03
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693929&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>027：
+                                   				使用Python实现Selenium自动化测试 04
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693928&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>028：
+                                   				使用Python实现Selenium自动化测试 05
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693927&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>029：
+                                   				使用Python实现Selenium自动化测试 06
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693926&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>030：
+                                   				使用Python实现Selenium自动化测试 07
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693925&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>031：
+                                   				使用Python实现Selenium自动化测试 08
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693924&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>032：
+                                   				使用Python实现Selenium自动化测试 09
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=693923&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	<!-- 开始循环 ,bigStage大阶段结束-->
+                    	<!-- courseStage是小阶段 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="61"></a>
+                       <span class="headline-content">DATASCIENCE</span>
+                    	</h2>
+                    	
+                    <div id="stage738227" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				AI概要、Numpy简介
+                                   					、
+                                   				Numpy核心，基础属性操作
+                                   					、
+                                   				Numpy进阶，numpy掩码操作及常用API
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691214&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				Matplotlib数据可视化
+                                   					、
+                                   				Matplotlib绘图接口基础
+                                   					、
+                                   				Matplotlib绘图接口核心
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691213&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				Matplotlib绘制三维图像
+                                   					、
+                                   				案例应用，读取文件，绘制股价曲线
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691212&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				分析指标：加权均值、极值、标准差、中位数
+                                   					、
+                                   				数据轴向统计，一维卷积运算
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691211&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				线型模型之线性拟合与线性预测
+                                   					、
+                                   				协方差、相关矩阵与相关性系数
+                                   					、
+                                   				多项式拟合与数据平滑
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691210&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>06：
+                                   				矩阵
+                                   					、
+                                   				函数矢量化与numpy通用函数
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691209&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>07：
+                                   				傅里叶变换
+                                   					、
+                                   				随机数、数理统计与概率分布
+                                   					、
+                                   				排序、插值、积分
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691208&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="62"></a>
+                       <span class="headline-content">DATASCIENCE_PROJECT</span>
+                    	</h2>
+                    	
+                    <div id="stage738253" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				pandas基础
+                                   					、
+                                   				pandas核心数据结构与数据操作
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691207&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				ipython与jupyter notebook
+                                   					、
+                                   				金融量化分析项目介绍与实现
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691206&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="63"></a>
+                       <span class="headline-content">MACHINE_LEARNING</span>
+                    	</h2>
+                    	
+                    <div id="stage738260" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				人工智能领域详细介绍
+                                   					、
+                                   				数据预处理
+                                   					、
+                                   				线性回归、损失函数推导、梯度下降
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691205&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				岭回归、多项式回归
+                                   					、
+                                   				决策树回归模型
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691204&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				正向激励，自助聚合、随机森林
+                                   					、
+                                   				简单分类器、逻辑回归分类器、朴素贝叶斯分类器
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691203&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				训练集和测试集划分
+                                   					、
+                                   				交叉验证、交叉验证指标
+                                   					、
+                                   				混淆矩阵、分类报告
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691202&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				SVM支持向量机
+                                   					、
+                                   				类型数不平衡问题、置信概率、最优超参数
+                                   					、
+                                   				k-means聚类算法、均值漂移聚类算法
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691201&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>06：
+                                   				凝聚层次聚类算法、DBSCAN聚类算法
+                                   					、
+                                   				简单推荐引擎
+                                   					、
+                                   				文本分析与NLP
+                                   					、
+                                   				主题分类
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691200&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>07：
+                                   				语音识别
+                                   					、
+                                   				OpenCV与图像识别
+                                   					、
+                                   				人脸识别：视频捕捉、人脸检测
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691199&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>08：
+                                   				神经网络简介
+                                   					、
+                                   				实现简单人工神经网络，正向传播、反向传播
+                                   					、
+                                   				TensorFlow基础
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691198&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>09：
+                                   				卷积神经网络
+                                   					、
+                                   				基于TengsorFlow实现手写数字识别
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691197&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="64"></a>
+                       <span class="headline-content">MACHINE_LEARNING_PROJECT</span>
+                    	</h2>
+                    	
+                    <div id="stage738295" class="course-list">
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				基于用户画像的内容推荐系统
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691196&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				基于用户画像的内容推荐系统
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	<li class="sp"><a target="_blank" href="http://tts.tmooc.cn/video/showVideo?menuId=691195&version=AIDTN201903">视频</a></li>
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	<!-- 开始循环 ,bigStage大阶段结束-->
+                </div>
+                <div class="col-190 md2017111501lty">
+                    <div class="md2017110201lty">
+                    <div class="slide" style="">
+                     <div id="sideToolbar" style="">
+                     <div id="sideCatalog" class="sideCatalogBg" style="visibility: visible;">
+                     <div id="sideCatalog-sidebar">
+                        <div class="sideCatalog-sidebar-top"></div>
+                        <div class="sideCatalog-sidebar-bottom"></div>
+                     </div>
+                    <div id="sideCatalog-updown" style="visibility: visible;">
+                        <div id="sideCatalog-up" class="sideCatalog-up-disable" title="向上翻页"></div>
+                        <div id="sideCatalog-down" class="sideCatalog-down-enable" title="向下翻页"></div>
+                    </div>
+                    <div id="sideCatalog-catalog">
+                        <dl style="width:175px;zoom:1"></dl>
+                    </div>
+                </div>
+                <a id="sideCatalogBtn" class="" style="visibility: visible;" href="javascript:void(0);"></a>
+                <a id="sideToolbar-up" style="visibility: visible;" title="返回顶部" href="javascript:void(0)"></a>
+            </div>
+            </div>
+             </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer" id="footerDiv">
+        
+    </div>
+     <script src="http://tts.tmooc.cn/private/ttsfront/js/jquery-2.1.1.js"></script>
+    <script src="http://tts.tmooc.cn/private/ttsfront/js/jquery-cookie.js"></script>
+     <script src="http://tts.tmooc.cn/private/ttsfront/js/rightNav.min.js"></script>
+    <script src="http://tts.tmooc.cn/private/ttsfront/js/main.js"></script>
+    <script src="http://tts.tmooc.cn/private/ttsfront/js/mytts.js"></script>
+    <script> 
+    	$("#headerDiv").load("http://tts.tmooc.cn/ttsPage/main/header.html");
+		$("#footerDiv").load("http://tts.tmooc.cn/ttsPage/main/footer.html");
+    </script>
+</body>
+</html>
