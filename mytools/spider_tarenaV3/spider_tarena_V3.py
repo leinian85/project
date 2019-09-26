@@ -13,7 +13,7 @@ from threading import Thread
 AUTH = ("tarenacode", "code_2014")
 INGORE = ["../"]
 
-FILESIZE = 10 * 1024 * 1024
+FILESIZE = 1 * 1024 * 1024
 FILESIZELIST = "downlist"
 
 all_files_size = {}  # 记录下载过的文件大小
@@ -216,7 +216,7 @@ class TarenaSpider:
         if un_done_files:
             for file in un_done_files:
                 os.remove(file)
-        print("已删除未下载完成的文件...")
+            print("已删除未下载完成的文件...")
 
 
 def now():
@@ -270,7 +270,7 @@ def main(baseurl, downdir):
     ts.finial_show()
 
 
-baseurl = "http://code.tarena.com.cn/AIDCode/aid1905/"
+baseurl = "http://code.tarena.com.cn/BIGCode/big1904/"
 # 设置下载目录
 downdir = "/home/tarena/1905/"
 
