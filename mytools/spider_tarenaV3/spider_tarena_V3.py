@@ -194,7 +194,8 @@ class TarenaSpider:
     def show_dir(self):
         print("下载完成,文件位置:{}".format(self.dir))
 
-    def show_message(self):
+    @staticmethod
+    def show_message():
         print("新增文件{}个:".format(len(new_file)))
         for item in new_file:
             print(item)
@@ -209,6 +210,14 @@ class TarenaSpider:
         url_list = [self.baseurl + dir for dir in first_dir if dir not in INGORE]
         return url_list
 
+    @staticmethod
+    def finial_show():
+        TarenaSpider.show_message()
+        if un_done_files:
+            for file in un_done_files:
+                os.remove(file)
+        print("已删除未下载完成的文件...")
+
 
 def now():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
@@ -221,19 +230,11 @@ def test_run_on_file(url):
     ts.data_init()
     try:
         ts.download(url)
-        ts.show_message()
-        if un_done_files:
-            print("正在删除未下载完成的文件...")
-            for file in un_done_files:
-                os.remove(file)
         print("下载完成!")
     except Exception as e:
-        ts.show_message()
-        if un_done_files:
-            print("正在删除未下载完成的文件...")
-            for file in un_done_files:
-                os.remove(file)
         print("程序终止")
+
+    ts.finial_show()
 
 
 def run(baseurl, downdir, if_dir):
@@ -262,24 +263,16 @@ def main(baseurl, downdir):
         for t in t_list:
             t.join()
         ts.show_dir()
-        ts.show_message()
 
-        if un_done_files:
-            print("正在删除未下载完成的文件...")
-            for file in un_done_files:
-                os.remove(file)
     except:
-        ts.show_message()
-        if un_done_files:
-            print("正在删除未下载完成的文件...")
-            for file in un_done_files:
-                os.remove(file)
         print("程序终止")
 
+    ts.finial_show()
 
-baseurl = "http://code.tarena.com.cn/AIDCode/aid1905/02-data/"
+
+baseurl = "http://code.tarena.com.cn/AIDCode/aid1905/"
 # 设置下载目录
-downdir = "./"
+downdir = "/home/tarena/1905/"
 
 main(baseurl, downdir)
 
