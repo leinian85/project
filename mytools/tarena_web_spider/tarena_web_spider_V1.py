@@ -67,24 +67,27 @@ class WebSpider:
         with open(name, "w") as f:
             f.write(context)
 
-    def __parse_html_level2(self, name, url):
+    def __parse_html_level2(self, title, url):
         html = self.__get_html(url).content.decode("utf-8", "ignore")
         # self.__write_file('html.txt', html.content.decode("utf-8", "ignore"))
         pattern = re.compile("<a href=.*?changeVideo\('(.*?)',this\).*?</a>", re.S)
         basename = pattern.findall(html)  # basename = ['aid19050531am.m3u8', 'aid19050531pm.m3u8']
         baseurl = "http://videotts.it211.com.cn"
+        i = 1
         for one_name in basename:
             name = one_name.split(".")[0]  # aid19050531am
             url = "/".join([baseurl, name, one_name])  # http://videotts.it211.com.cn/aid19050531am/aid19050531am.m3u8
-            self.__parse_html_level3(name, url)
+            mp4_title = title + "-" + str(i)
+            self.__parse_html_level3(mp4_title, name, url)
+            i += 1
             return
 
-    def __parse_html_level3(self, name, url):
+    def __parse_html_level3(self, title, name, url):
         html = self.__get_html(url).content.decode("utf-8", "ignore")
-        self.__parse_text(name, html)
+        self.__parse_text(title, name, html)
         # self.__write_file('html.txt', html.content.decode("utf-8", "ignore"))
 
-    def __parse_text(self, name, html):
+    def __parse_text(self, title, name, html):
         if "#EXTM3U" not in html:
             return
 
