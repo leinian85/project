@@ -132,7 +132,6 @@ class WebSpider:
                         f.write(res.content)
                         f.flush()
 
-
     def run(self, base_url):
         self.__set_data()
         html = self.__get_html(base_url)
@@ -147,7 +146,8 @@ class WebSpider:
 
 
 url = "http://tts.tmooc.cn/studentCenter/toMyttsPage"
-ws = WebSpider()
+base_dir = "/home/tarena/1905/"
+ws = WebSpider(base_dir=base_dir)
 ws.run(url)
 
 # url = "http://videotts.it211.com.cn/aid19050531am/aid19050531am-0.ts"
