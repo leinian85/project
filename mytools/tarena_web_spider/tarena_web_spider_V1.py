@@ -29,8 +29,8 @@ class WebSpider:
         self.__set_headers()
 
         if file:
-            return requests.get(url, data=self.data, headers=self.headers, stream=True)
-        return requests.get(url, data=self.data, headers=self.headers)
+            return requests.get(url, headers=self.headers, stream=True)
+        return requests.get(url, headers=self.headers)
 
     def __create_dirs(self, dir):
         if not os.path.exists(dir):
@@ -50,7 +50,7 @@ class WebSpider:
 
                 self.__parse_html_level2(name, url)
 
-                return
+                # return
 
                 # url_info[name] = url
 
@@ -84,48 +84,52 @@ class WebSpider:
 
     def __parse_html_level3(self, title, name, url):
         html = self.__get_html(url).content.decode("utf-8", "ignore")
+        self.__write_file('html.txt', html)
         self.__parse_text(title, name, html)
-        # self.__write_file('html.txt', html.content.decode("utf-8", "ignore"))
 
     def __parse_text(self, title, name, html):
         if "#EXTM3U" not in html:
             return
 
         dir = self.download_dir + name + "/"
+        os.system(r'rm -rf %s' % dir)
         self.__create_dirs(dir)
 
         file_line = html.split("\n")
 
-        for index, line in enumerate(file_line):  # 第二层
-            if "#EXT-X-KEY" in line:  # 找解密Key
-                method_pos = line.find("METHOD")
-                comma_pos = line.find(",")
-                method = line[method_pos:comma_pos].split('=')[1]
+        try:
+            for index, line in enumerate(file_line):  # 第二层
+                if "#EXT-X-KEY" in line:  # 找解密Key
+                    method_pos = line.find("METHOD")
+                    comma_pos = line.find(",")
+                    method = line[method_pos:comma_pos].split('=')[1]
 
-                # "Decode Method：", method
+                    # "Decode Method：", method
 
-                uri_pos = line.find("URI")
-                quotation_mark_pos = line.rfind('"')
-                key_path = line[uri_pos:quotation_mark_pos].split('"')[1]
+                    uri_pos = line.find("URI")
+                    quotation_mark_pos = line.rfind('"')
+                    key_path = line[uri_pos:quotation_mark_pos].split('"')[1]
 
-                key_url = key_path  # 拼出key解密密钥URL
-                res = self.__get_html(key_url)
-                key = res.content
-                cryptor = AES.new(key, AES.MODE_CBC, key)
+                    key_url = key_path  # 拼出key解密密钥URL
+                    res = self.__get_html(key_url)
+                    key = res.content
+                    cryptor = AES.new(key, AES.MODE_CBC, key)
 
-            if "EXTINF" in line:  # 找ts地址并下载
-                ts_url = file_line[index + 1]  # 拼出ts片段的URL
-                # print(ts_url) # http://videotts.it211.com.cn/aid19050531am/aid19050531am-78.ts
+                if "EXTINF" in line:  # 找ts地址并下载
+                    ts_url = file_line[index + 1]  # 拼出ts片段的URL
+                    # print(ts_url) # http://videotts.it211.com.cn/aid19050531am/aid19050531am-78.ts
 
-                c_fule_name = file_line[index + 1].rsplit("/", 1)[-1]
-                print(c_fule_name) # aid19050531am-78.ts
+                    c_fule_name = file_line[index + 1].rsplit("/", 1)[-1]
+                    print(c_fule_name)  # aid19050531am-78.ts
 
-                res = self.__get_html(ts_url)
-                file_name = dir + c_fule_name
-                with open(file_name, 'ab') as f:
-                    f.write(cryptor.decrypt(res.content))
+                    res = self.__get_html(ts_url)
+                    file_name = dir + c_fule_name
+                    with open(file_name, 'ab') as f:
+                        f.write(cryptor.decrypt(res.content))
 
-        self.__merrg_ts(title, dir, self.download_dir)
+            self.__merrg_ts(title, dir, self.download_dir)
+        except:
+            pass
 
     def __merrg_ts(self, title, dir, download_dir):
         # 读取ts文件夹下所有的ts文件
@@ -149,14 +153,14 @@ class WebSpider:
         print("{}  OK!".format(output_file))
 
     def run(self, base_url):
-        self.__set_data()
+        # self.__set_data()
         html = self.__get_html(base_url)
         # self.__write_file('html.txt',html.content.decode("utf-8","ignore"))
         self.__get_info(html.content.decode("utf-8", "ignore"))
         # self.__write_list_file('urls.txt',urls)
 
     def save_file(self, url):
-        self.__set_data()
+        # self.__set_data()
         html = self.__get_html(url)
         self.__write_file('html.txt', html.content.decode("utf-8", "ignore"))
 
