@@ -270,7 +270,7 @@ def main(baseurl, downdir):
     ts.finial_show()
 
 
-baseurl = "http://code.tarena.com.cn/BIGCode/big1904/"
+baseurl = "http://code.tarena.com.cn/AIDCode/aid1905/"
 # 设置下载目录
 downdir = "/home/tarena/1905/"
 
