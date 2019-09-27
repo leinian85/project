@@ -78,9 +78,9 @@ class WebSpider:
             name = one_name.split(".")[0]  # aid19050531am
             url = "/".join([baseurl, name, one_name])  # http://videotts.it211.com.cn/aid19050531am/aid19050531am.m3u8
             mp4_title = title + "-" + str(i)
-            self.__parse_html_level3(mp4_title, name, url)
-            i += 1
-            return
+            if not os.path.exists(os.path.join(self.download_dir, mp4_title + '.mp4')):
+                self.__parse_html_level3(mp4_title, name, url)
+                i += 1
 
     def __parse_html_level3(self, title, name, url):
         html = self.__get_html(url).content.decode("utf-8", "ignore")
@@ -96,8 +96,6 @@ class WebSpider:
 
         file_line = html.split("\n")
 
-        unknow = True
-        key = ""
         for index, line in enumerate(file_line):  # 第二层
             if "#EXT-X-KEY" in line:  # 找解密Key
                 method_pos = line.find("METHOD")
@@ -116,24 +114,39 @@ class WebSpider:
                 cryptor = AES.new(key, AES.MODE_CBC, key)
 
             if "EXTINF" in line:  # 找ts地址并下载
-                unknow = False
                 ts_url = file_line[index + 1]  # 拼出ts片段的URL
-                print(ts_url)
+                # print(ts_url) # http://videotts.it211.com.cn/aid19050531am/aid19050531am-78.ts
 
                 c_fule_name = file_line[index + 1].rsplit("/", 1)[-1]
-                print(c_fule_name)
+                print(c_fule_name) # aid19050531am-78.ts
 
                 res = self.__get_html(ts_url)
+                file_name = dir + c_fule_name
+                with open(file_name, 'ab') as f:
+                    f.write(cryptor.decrypt(res.content))
 
-                if len(key):  # AES 解密
-                    file_name = dir + c_fule_name + ".mp4"
-                    with open(file_name, 'ab') as f:
-                        f.write(cryptor.decrypt(res.content))
-                else:
-                    file_name = dir + c_fule_name
-                    with open(file_name, 'ab') as f:
-                        f.write(res.content)
-                        f.flush()
+        self.__merrg_ts(title, dir, self.download_dir)
+
+    def __merrg_ts(self, title, dir, download_dir):
+        # 读取ts文件夹下所有的ts文件
+        path_list = os.listdir(dir)
+        # 对文件进行排序
+        path_list.sort()
+        # 将排序后的ts的绝对路径放入列表中
+        li = [os.path.join(dir, filename) for filename in path_list]
+        # 类似于[001.ts|00.2ts|003.ts]
+        input_file = '|'.join(li)
+        # 指定输出文件名称
+        output_file = os.path.join(download_dir, title + '.mp4')
+        # 使用ffmpeg将ts合并为mp4
+        # command = 'ffmpeg -i "concat:%s" -acodec copy -vcodec copy -absf aac_adtstoasc %s' % (input_file, output_file)
+        command = 'ffmpeg -loglevel quiet -i "concat:{}" -c copy -bsf:a aac_adtstoasc -movflags +faststart {}'
+        command = command.format(input_file, output_file)
+
+        # 指行命令
+        os.system(command)
+        os.system(r'rm -rf %s' % dir)
+        print("{}  OK!".format(output_file))
 
     def run(self, base_url):
         self.__set_data()
