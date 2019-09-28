@@ -18,7 +18,8 @@ class WebSpider:
         self.headers = {
             "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0",
             "Referer": "http://tts.tmooc.cn/video/showVideo?menuId=672192&version=AIDTN201903",
-            "Cookie": "tedu.local.language=zh-CN; __root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; cloudAuthorityCookie=0; versionListCookie=AIDTN201903; defaultVersionCookie=AIDTN201903; versionAndNamesListCookie=AIDTN201903N22NPython%25E4%25BA%25BA%25E5%25B7%25A5%25E6%2599%25BA%25E8%2583%25BD%25E5%2585%25A8%25E6%2597%25A5%25E5%2588%25B6%25E8%25AF%25BE%25E7%25A8%258BV06N22N658321; courseCookie=AID; stuClaIdCookie=658321; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1569396919,1569544618; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1569544618; TMOOC-SESSION=D4D64B305AE74825A3427E0C92223E14; sessionid=D4D64B305AE74825A3427E0C92223E14|E_bfukbc1; isCenterCookie=yes; Hm_lvt_e997f0189b675e95bb22e0f8e2b5fa74=1569396937,1569498174,1569544623; Hm_lpvt_e997f0189b675e95bb22e0f8e2b5fa74=1569544635; _qdda=3-1.1us199; _qddab=3-ild3b0.k11ecn8q; _qddamta_2852189568=3-0; JSESSIONID=189FF721AE1E09E15DDA9B1EEA2EFB0D"
+            "Cookie": "tedu.local.language=zh-CN; __root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; cloudAuthorityCookie=0; versionListCookie=AIDTN201903; defaultVersionCookie=AIDTN201903; versionAndNamesListCookie=AIDTN201903N22NPython%25E4%25BA%25BA%25E5%25B7%25A5%25E6%2599%25BA%25E8%2583%25BD%25E5%2585%25A8%25E6%2597%25A5%25E5%2588%25B6%25E8%25AF%25BE%25E7%25A8%258BV06N22N658321; courseCookie=AID; stuClaIdCookie=658321; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1569396919,1569544618,1569630675; TMOOC-SESSION=5D8BB472500F4558995122AE4E7467F7; sessionid=5D8BB472500F4558995122AE4E7467F7|E_bfukbc1; isCenterCookie=yes; _qddab=3-uhlm2a.k12yha7n; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1569639391; JSESSIONID=5361F0F44F0533017FFF199C1E3A4747; Hm_lvt_e997f0189b675e95bb22e0f8e2b5fa74=1569636873,1569639393,1569639733,1569649686; Hm_lpvt_e997f0189b675e95bb22e0f8e2b5fa74=1569649686"
+            # "Cookie": ""
         }
 
     def __set_data(self):
@@ -112,9 +113,6 @@ class WebSpider:
                     key_path = line[uri_pos:quotation_mark_pos].split('"')[1]
 
                     key_url = key_path  # 拼出key解密密钥URL
-                    res = self.__get_html(key_url)
-                    key = res.content
-                    cryptor = AES.new(key, AES.MODE_CBC, key)
 
                 if "EXTINF" in line:  # 找ts地址并下载
                     ts_url = file_line[index + 1]  # 拼出ts片段的URL
@@ -122,6 +120,11 @@ class WebSpider:
 
                     c_fule_name = file_line[index + 1].rsplit("/", 1)[-1]
                     print(c_fule_name)  # aid19050531am-78.ts
+                    c_fule_name = c_fule_name.split("-")[1].split(".")[0].zfill(4)+ ".ts"
+
+                    res_key = self.__get_html(key_url)
+                    key = res_key.content
+                    cryptor = AES.new(key, AES.MODE_CBC, key)
 
                     res = self.__get_html(ts_url)
                     file_name = dir + c_fule_name
@@ -131,6 +134,7 @@ class WebSpider:
             self.__merrg_ts(title, dir, self.download_dir)
         except:
             pass
+
 
     def __merrg_ts(self, title, dir, download_dir):
         # 读取ts文件夹下所有的ts文件
@@ -145,13 +149,14 @@ class WebSpider:
         output_file = os.path.join(download_dir, title + '.mp4')
         # 使用ffmpeg将ts合并为mp4
         # command = 'ffmpeg -i "concat:%s" -acodec copy -vcodec copy -absf aac_adtstoasc %s' % (input_file, output_file)
-        command = 'ffmpeg -loglevel quiet -i "concat:{}" -c copy -bsf:a aac_adtstoasc -movflags +faststart {}'
+        command = 'ffmpeg -i "concat:{}" -c copy -bsf:a aac_adtstoasc -movflags +faststart {}'
+        # command = 'ffmpeg -loglevel quiet -i "concat:{}" -c copy -bsf:a aac_adtstoasc -movflags +faststart {}'
         command = command.format(input_file, output_file)
 
         # 指行命令
         os.system(command)
         os.system(r'rm -rf %s' % dir)
-        print("{} {}  OK!".format(now(),output_file))
+        print("{} {}  OK!".format(now(), output_file))
 
     def run(self, base_url):
         # self.__set_data()
@@ -164,6 +169,7 @@ class WebSpider:
         # self.__set_data()
         html = self.__get_html(url)
         self.__write_file('html.txt', html.content.decode("utf-8", "ignore"))
+
 
 def now():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
