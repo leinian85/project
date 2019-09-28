@@ -5,6 +5,7 @@ from lxml import etree
 import re
 import os
 from Crypto.Cipher import AES
+import time
 
 
 class WebSpider:
@@ -150,7 +151,7 @@ class WebSpider:
         # 指行命令
         os.system(command)
         os.system(r'rm -rf %s' % dir)
-        print("{}  OK!".format(output_file))
+        print("{} {}  OK!".format(now(),output_file))
 
     def run(self, base_url):
         # self.__set_data()
@@ -163,6 +164,9 @@ class WebSpider:
         # self.__set_data()
         html = self.__get_html(url)
         self.__write_file('html.txt', html.content.decode("utf-8", "ignore"))
+
+def now():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
 
 url = "http://tts.tmooc.cn/studentCenter/toMyttsPage"
