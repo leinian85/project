@@ -19,20 +19,26 @@ class WebSpider:
         self.headers = {
             "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0",
             "Referer": "http://tts.tmooc.cn/video/showVideo?menuId=672192&version=AIDTN201903",
-            "Cookie": "tedu.local.language=zh-CN; __root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; cloudAuthorityCookie=0; versionListCookie=AIDTN201903; defaultVersionCookie=AIDTN201903; versionAndNamesListCookie=AIDTN201903N22NPython%25E4%25BA%25BA%25E5%25B7%25A5%25E6%2599%25BA%25E8%2583%25BD%25E5%2585%25A8%25E6%2597%25A5%25E5%2588%25B6%25E8%25AF%25BE%25E7%25A8%258BV06N22N658321; courseCookie=AID; stuClaIdCookie=658321; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1569396919,1569544618,1569630675; TMOOC-SESSION=5D8BB472500F4558995122AE4E7467F7; sessionid=5D8BB472500F4558995122AE4E7467F7|E_bfukbc1; isCenterCookie=yes; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1569657366; Hm_lvt_e997f0189b675e95bb22e0f8e2b5fa74=1569639733,1569649686,1569654041,1569657388; _qddamta_2852189568=3-0; Hm_lpvt_e997f0189b675e95bb22e0f8e2b5fa74=1569659517; _qdda=3-1.1us199; _qddab=3-33ig1l.k13aqykj; JSESSIONID=209FB75011FA0393ABD06A209BE37151"
+            "Cookie": "tedu.local.language=zh-CN; __root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; cloudAuthorityCookie=0; _qdda=3-1.1us199; TMOOC-SESSION=36590CECE6814AED990CB55DA3887ED6; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1570584414,1570686654,1570793087,1570793570; _qddab=3-ya0g9l.k1m1xtji; isCenterCookie=yes; sessionid=36590CECE6814AED990CB55DA3887ED6|E_bfukbc1; versionListCookie=AIDTN201903; defaultVersionCookie=AIDTN201903; versionAndNamesListCookie=AIDTN201903N22NPython%25E4%25BA%25BA%25E5%25B7%25A5%25E6%2599%25BA%25E8%2583%25BD%25E5%2585%25A8%25E6%2597%25A5%25E5%2588%25B6%25E8%25AF%25BE%25E7%25A8%258BV06N22N658321; courseCookie=AID; stuClaIdCookie=658321; _qddamta_2852189568=3-0; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1570796267; Hm_lvt_e997f0189b675e95bb22e0f8e2b5fa74=1570793577,1570795473,1570795964,1570796282; Hm_lpvt_e997f0189b675e95bb22e0f8e2b5fa74=1570796285; JSESSIONID=228242A895C9C73D54832F5832A587D4"
             # "Cookie": ""
         }
 
+    def __set_headers_out(self):
+        self.headers = {
+            "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0",
+            "Referer": "http://tts.tmooc.cn/video/showVideo?menuId=672192&version=AIDTN201903",
+            "Cookie": "__root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; TMOOC-SESSION=36590CECE6814AED990CB55DA3887ED6; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1570584414,1570686654,1570793087,1570793570; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1570796931"
+        }
     def __set_data(self):
         self.data = {
             "_": "1569316283047"
         }
 
     def __get_html(self, url, file=False):
-        self.__set_headers()
-
         if file:
-            return requests.get(url, headers=self.headers, stream=True)
+            self.__set_headers_out()
+        else:
+            self.__set_headers()
         return requests.get(url, headers=self.headers)
 
     def __create_dirs(self, dir):
@@ -50,7 +56,7 @@ class WebSpider:
             for onelist in info:
                 name = onelist.xpath('./p/text()')[0].strip()
                 name = name.replace("\r\n", "").replace("\t", "").replace(" ", "")
-                url = onelist.xpath('.//a/@href')[0]
+                url = onelist.xpath('.//li[@class="sp"]/a/@href')[0]
 
                 self.__parse_html_level2(steps[index], name, url)
 
@@ -83,14 +89,15 @@ class WebSpider:
             url = "/".join([baseurl, name, one_name])  # http://videotts.it211.com.cn/aid19050531am/aid19050531am.m3u8
             mp4_title = title + "-" + str(i)
             file_name = os.path.join(self.download_dir, steps, mp4_title + '.mp4')
-            print(file_name)
+
             if not os.path.exists(file_name):
+                print(file_name)
                 self.__parse_html_level3(steps, mp4_title, name, url)
                 i += 1
 
     def __parse_html_level3(self, steps, title, name, url):
         html = self.__get_html(url).content.decode("utf-8", "ignore")
-        self.__write_file('html.txt', html)
+        # self.__write_file('html.txt', html)
         self.__parse_text(steps, title, name, html)
 
     def __parse_text(self, steps, title, name, html):
@@ -110,7 +117,6 @@ class WebSpider:
                     # EXT-X-KEY:METHOD=AES-128,URI="http://videotts.it211.com.cn/aid19050604am/static.key"
                     pattern = re.compile('URI="(.*?)"', re.S)
                     key_url = pattern.findall(line)[0]
-                    print(key_url)
 
                 if "EXTINF" in line:  # 找ts地址并下载
                     try:
@@ -169,10 +175,14 @@ class WebSpider:
         res_key = self.__get_html(key_url)
         key = res_key.content
         # print(key)
-        html = self.__get_html(ts_url)
+        html = self.__get_html(ts_url,True)
         with open(dowmload_dir, 'ab') as f:
             cryptor = AES.new(key, AES.MODE_CBC, key)
             f.write(cryptor.decrypt(html.content))
+
+    def __write_list(self,text):
+        with open('url_list','a') as f:
+            f.write(text)
 
 
 def now():
