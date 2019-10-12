@@ -10,11 +10,11 @@ import time
 
 
 class WebSpider:
-    def __init__(self, base_dir="./", base_name="mp4", ingore=[]):
+    def __init__(self, base_dir="./", base_name="mp4",valid = []):
         # self.ua = UserAgent()
         self.download_dir = base_dir + base_name + "/"
         self.__create_dirs(self.download_dir)
-        self.ingore = ingore
+        self.valid = valid
 
     def __set_headers(self):
         self.headers = {
@@ -27,10 +27,9 @@ class WebSpider:
     def __set_headers_out(self):
         self.headers = {
             "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0",
-            "Referer": "http://tts.tmooc.cn/video/showVideo?menuId=672192&version=AIDTN201903",
+            "Referer": "http://tts.tmooc.cn/video/showVideo?menuId=678266&version=TSDTN201905",
             "Cookie": "__root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; TMOOC-SESSION=36590CECE6814AED990CB55DA3887ED6; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1570584414,1570686654,1570793087,1570793570; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1570796931"
         }
-
     def __set_data(self):
         self.data = {
             "_": "1569316283047"
@@ -52,16 +51,17 @@ class WebSpider:
         steps = res.xpath('//h2[@class="headline-1"]/span/text()')
         all = res.xpath('//div[@class="course-list"]')
         url_info = {}
-        # print(steps)
-        # print(all)
         for index, one in enumerate(all):
-            info = one.xpath('.//li[@class="opened"]')
             step = steps[index]
-            if step in self.ingore:
+            info = one.xpath('.//li[@class="opened"]')
+            if step in self.valid:
+                step = str(index+1).zfill(4)+'_'+step
+                print(step)
                 for onelist in info:
                     name = onelist.xpath('./p/text()')[0].strip()
                     name = name.replace("\r\n", "").replace("\t", "").replace(" ", "")
                     url = onelist.xpath('.//li[@class="sp"]/a/@href')[0]
+
                     self.__parse_html_level2(step, name, url)
 
 
@@ -88,14 +88,15 @@ class WebSpider:
             url = "/".join([baseurl, name, one_name])  # http://videotts.it211.com.cn/aid19050531am/aid19050531am.m3u8
             mp4_title = title + "-" + str(i)
             file_name = os.path.join(self.download_dir, steps, mp4_title + '.mp4')
-            print(file_name)
+
             if not os.path.exists(file_name):
+                print(file_name)
                 self.__parse_html_level3(steps, mp4_title, name, url)
                 i += 1
 
     def __parse_html_level3(self, steps, title, name, url):
         html = self.__get_html(url).content.decode("utf-8", "ignore")
-        self.__write_file('html.txt', html)
+        # self.__write_file('html.txt', html)
         self.__parse_text(steps, title, name, html)
 
     def __parse_text(self, steps, title, name, html):
@@ -112,10 +113,9 @@ class WebSpider:
             key_url = ""
             for index, line in enumerate(file_line):  # 第二层
                 if "#EXT-X-KEY" in line:  # 找解密Key
-                    # EXT-X-KEY:METHOD=AES-128,URI="http://videotts.it211.com.cn/aid19050604am/static.key"
+                    # URI="http://videotts.it211.com.cn/aid19050604am/static.key"
                     pattern = re.compile('URI="(.*?)"', re.S)
                     key_url = pattern.findall(line)[0]
-                    print(key_url)
 
                 if "EXTINF" in line:  # 找ts地址并下载
                     try:
@@ -123,8 +123,8 @@ class WebSpider:
                         # print(ts_url) # http://videotts.it211.com.cn/aid19050531am/aid19050531am-78.ts
 
                         c_fule_name = file_line[index + 1].rsplit("/", 1)[-1]
-                        print(c_fule_name)  # aid19050531am-78.ts
                         c_fule_name = c_fule_name.split("-")[1].split(".")[0].zfill(4) + ".ts"
+                        print(c_fule_name)  # aid19050531am-0078.ts
 
                         file_name = dir + c_fule_name
 
@@ -174,19 +174,23 @@ class WebSpider:
         res_key = self.__get_html(key_url)
         key = res_key.content
         # print(key)
-        html = self.__get_html(ts_url, True)
+        html = self.__get_html(ts_url,True)
         with open(dowmload_dir, 'ab') as f:
             cryptor = AES.new(key, AES.MODE_CBC, key)
             f.write(cryptor.decrypt(html.content))
+
+    def __write_list(self,text):
+        with open('url_list','a') as f:
+            f.write(text)
 
 
 def now():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
-ingore = ['TESTTHEORY02']
+valid_list = ['TESTTHEORY02']
 url = "http://tts.tmooc.cn/studentCenter/toMyttsPage"
 base_dir = "/home/tarena/1905/"
-ws = WebSpider(base_dir=base_dir, base_name='TSD1906',ingore=ingore)
+ws = WebSpider(base_dir=base_dir,base_name='TSD1906',valid = valid_list)
 ws.run(url)
 
 # url = "http://videotts.it211.com.cn/aid19050603am/aid19050603am-92.ts"
