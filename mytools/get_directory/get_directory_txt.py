@@ -92,7 +92,7 @@ class AutoDirectoty:
 
 
 def main():
-    path = "/home/tarena/1905/WEBCode"
+    path = "/home/tarena/1905/AIDCode/aid1905_01"
     ad = AutoDirectoty(path)
     ad.run()
 

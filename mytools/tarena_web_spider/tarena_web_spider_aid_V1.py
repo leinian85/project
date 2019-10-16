@@ -10,26 +10,26 @@ import time
 
 
 class WebSpider:
-    def __init__(self, base_dir="./", base_name="mp4",valid = []):
+    def __init__(self, base_dir="./", base_name="mp4", valid=[]):
         # self.ua = UserAgent()
         self.download_dir = base_dir + base_name + "/"
         self.__create_dirs(self.download_dir)
         self.valid = valid
+        self.dir_list_not_over = []
+        self.headers = {
+            "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0",
+            "Referer": "http://tts.tmooc.cn/video/showVideo?menuId=672192&version=AIDTN201903"
+        }
 
     def __set_headers(self):
-        self.headers = {
-            "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0",
-            "Referer": "http://tts.tmooc.cn/video/showVideo?menuId=672192&version=AIDTN201903",
-            "Cookie": "tedu.local.language=zh-CN; __root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; cloudAuthorityCookie=0; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1570686654,1570793087,1570793570,1570840783; TMOOC-SESSION=CF3E8CFA4E3C4C3B812D14E029F932E7; isCenterCookie=yes; _qdda=3-1.1us199; _qddab=3-jbund5.k1n5mg3i; _qddamta_2852189568=3-0; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1570860415; sessionid=CF3E8CFA4E3C4C3B812D14E029F932E7|E_bfukbc1; versionListCookie=AIDTN201903; defaultVersionCookie=AIDTN201903; versionAndNamesListCookie=AIDTN201903N22NPython%25E4%25BA%25BA%25E5%25B7%25A5%25E6%2599%25BA%25E8%2583%25BD%25E5%2585%25A8%25E6%2597%25A5%25E5%2588%25B6%25E8%25AF%25BE%25E7%25A8%258BV06N22N658321; courseCookie=AID; stuClaIdCookie=658321; Hm_lvt_e997f0189b675e95bb22e0f8e2b5fa74=1570840788,1570841173,1570860252,1570860422; Hm_lpvt_e997f0189b675e95bb22e0f8e2b5fa74=1570860430; JSESSIONID=2DFB35DD8642C7170DD324E0201996C0"
-            # "Cookie": ""
-        }
+        self.headers["Cookie"] = \
+            "tedu.local.language=zh-CN; __root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1570793570,1570840783,1570947953,1571012527; TMOOC-SESSION=AB55D185BB7B44C9ABB47DF452F27947; isCenterCookie=yes; cloudAuthorityCookie=0; _qdda=3-1.1us199; _qddab=3-3uok8v.k1rlsg4t; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1571131058; sessionid=AB55D185BB7B44C9ABB47DF452F27947|E_bfukbc1; versionListCookie=AIDTN201903; defaultVersionCookie=AIDTN201903; versionAndNamesListCookie=AIDTN201903N22NPython%25E4%25BA%25BA%25E5%25B7%25A5%25E6%2599%25BA%25E8%2583%25BD%25E5%2585%25A8%25E6%2597%25A5%25E5%2588%25B6%25E8%25AF%25BE%25E7%25A8%258BV06N22N658321; courseCookie=AID; stuClaIdCookie=658321; Hm_lvt_e997f0189b675e95bb22e0f8e2b5fa74=1571127325,1571129859,1571130659,1571131066; JSESSIONID=FA846C92048CB74D5885D4C5EC25B701; Hm_lpvt_e997f0189b675e95bb22e0f8e2b5fa74=1571131068; _qddamta_2852189568=3-0"
+        # "Cookie": ""
 
     def __set_headers_out(self):
-        self.headers = {
-            "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0",
-            "Referer": "http://tts.tmooc.cn/video/showVideo?menuId=672192&version=AIDTN201903",
-            "Cookie": "__root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; TMOOC-SESSION=36590CECE6814AED990CB55DA3887ED6; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1570584414,1570686654,1570793087,1570793570; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1570796931"
-        }
+        self.headers[
+            "Cookie"] = "__root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; TMOOC-SESSION=36590CECE6814AED990CB55DA3887ED6; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1570584414,1570686654,1570793087,1570793570; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1570796931"
+
     def __set_data(self):
         self.data = {
             "_": "1569316283047"
@@ -51,30 +51,34 @@ class WebSpider:
         steps = res.xpath('//h2[@class="headline-1"]/span/text()')
         all = res.xpath('//div[@class="course-list"]')
         url_info = {}
+        print(len(steps))
         for index, one in enumerate(all):
-            step = steps[index]
+            print(index)
+            print(len(all))
+            step_ = steps[index]
             info = one.xpath('.//li[@class="opened"]')
-            if step in self.valid:
-                step = str(index+1).zfill(4)+'_'+step
-                print(step)
+            if (not self.valid) or (step_ in self.valid):
+                self.dir_list_not_over.append(step_)
+                step = str(index + 1).zfill(4) + '_' + step_
+                print("目录:", step)
                 for onelist in info:
                     name = onelist.xpath('./p/text()')[0].strip()
-                    name = name.replace("\r\n", "").replace("\t", "").replace(" ", "")
+                    name = name.replace("\r\n", "").replace("\t", "").replace(" ", "").replace("/", "").replace("(",
+                                                                                                                "").replace(
+                        ")", "")
                     url = onelist.xpath('.//li[@class="sp"]/a/@href')[0]
 
                     self.__parse_html_level2(step, name, url)
-
+        try:
+            if self.dir_list_not_over.get(step_):
+                self.dir_list_not_over.remove(step_)
+        except:
+            print("exception:", step_)
+            print("exception:", self.dir_list_not_over)
 
     def __write_file(self, name, text):
         with open(name, "w") as f:
             f.write(text)
-
-    def __write_list_file(self, name, text):
-        context = ""
-        for k in text:
-            context = context + "{}={}".format(k, text[k]) + "\n"
-        with open(name, "w") as f:
-            f.write(context)
 
     def __parse_html_level2(self, steps, title, url):
         html = self.__get_html(url).content.decode("utf-8", "ignore")
@@ -90,7 +94,7 @@ class WebSpider:
             file_name = os.path.join(self.download_dir, steps, mp4_title + '.mp4')
 
             if not os.path.exists(file_name):
-                print(file_name)
+                print("文件名:", file_name)
                 self.__parse_html_level3(steps, mp4_title, name, url)
                 i += 1
 
@@ -122,9 +126,9 @@ class WebSpider:
                         ts_url = file_line[index + 1]  # 拼出ts片段的URL
                         # print(ts_url) # http://videotts.it211.com.cn/aid19050531am/aid19050531am-78.ts
 
-                        c_fule_name = file_line[index + 1].rsplit("/", 1)[-1]
+                        c_fule_name = file_line[index + 1].rsplit("/", 1)[-1]  # aid19050531am-78.ts
+                        print("ts文件:", c_fule_name)
                         c_fule_name = c_fule_name.split("-")[1].split(".")[0].zfill(4) + ".ts"
-                        print(c_fule_name)  # aid19050531am-0078.ts
 
                         file_name = dir + c_fule_name
 
@@ -138,7 +142,7 @@ class WebSpider:
 
     def __error_log(self, text):
         with open("error.log", "a") as f:
-            f.write(text)
+            f.write(now() + " " + text)
 
     def __merrg_ts(self, steps, title, dir, download_dir):
         # 读取ts文件夹下所有的ts文件
@@ -166,21 +170,21 @@ class WebSpider:
         html = self.__get_html(base_url)
         # self.__write_file('html.txt',html.content.decode("utf-8","ignore"))
         self.__get_info(html.content.decode("utf-8", "ignore"))
-        # self.__write_list_file('urls.txt',urls)
+        if self.dir_list_not_over:
+            self.__write_file("dir_list_not_over", str(self.dir_list_not_over))
 
     def save_file(self, key_url, ts_url, dowmload_dir):
         # self.__set_data()
         # key_url = "http://videotts.it211.com.cn/aid19050531am/static.key"
         res_key = self.__get_html(key_url)
         key = res_key.content
-        # print(key)
-        html = self.__get_html(ts_url,True)
+        html = self.__get_html(ts_url, True)
         with open(dowmload_dir, 'ab') as f:
             cryptor = AES.new(key, AES.MODE_CBC, key)
             f.write(cryptor.decrypt(html.content))
 
-    def __write_list(self,text):
-        with open('url_list','a') as f:
+    def __write_list(self, text):
+        with open('url_list', 'a') as f:
             f.write(text)
 
 
