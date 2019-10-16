@@ -7,6 +7,7 @@ import re
 import os
 from Crypto.Cipher import AES
 import time
+from threading import Thread
 
 
 class WebSpider:
@@ -23,11 +24,12 @@ class WebSpider:
 
     def __set_headers(self):
         self.headers["Cookie"] = \
-            "tedu.local.language=zh-CN; __root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; cloudAuthorityCookie=0; _qdda=3-1.1us199; TMOOC-SESSION=8E0AAC9ED767425FAF3569A3420EAA5B; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1570840783,1570947953,1571012527,1571143781; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1571143781; sessionid=8E0AAC9ED767425FAF3569A3420EAA5B|E_bfuogu9; versionListCookie=TSDTN201905; defaultVersionCookie=TSDTN201905; versionAndNamesListCookie=TSDTN201905N22N%25E8%25BD%25AF%25E4%25BB%25B6%25E6%25B5%258B%25E8%25AF%2595%25E5%2585%25A8%25E6%2597%25A5%25E5%2588%25B6%25E8%25AF%25BE%25E7%25A8%258BV05N22N711538; courseCookie=TESTING; stuClaIdCookie=711538; isCenterCookie=yes; Hm_lvt_e997f0189b675e95bb22e0f8e2b5fa74=1571129859,1571130659,1571131066,1571143788; Hm_lpvt_e997f0189b675e95bb22e0f8e2b5fa74=1571143933; _qddab=3-38lv4o.k1ruj5f6; _qddamta_2852189568=3-0; JSESSIONID=EF5C4C661FFC29AB9D225A206B282A61"
+            "tedu.local.language=zh-CN; __root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; cloudAuthorityCookie=0; TMOOC-SESSION=37FA154597864E36949685F86B7B4E38; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1570947953,1571012527,1571143781,1571213510; isCenterCookie=yes; _qdda=3-1.1us199; _qddab=3-737adw.k1t5ergg; _qddamta_2852189568=3-0; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1571222738; sessionid=37FA154597864E36949685F86B7B4E38|E_bfuogu9; versionListCookie=TSDTN201905; defaultVersionCookie=TSDTN201905; versionAndNamesListCookie=TSDTN201905N22N%25E8%25BD%25AF%25E4%25BB%25B6%25E6%25B5%258B%25E8%25AF%2595%25E5%2585%25A8%25E6%2597%25A5%25E5%2588%25B6%25E8%25AF%25BE%25E7%25A8%258BV05N22N711538; courseCookie=TESTING; stuClaIdCookie=711538; Hm_lvt_e997f0189b675e95bb22e0f8e2b5fa74=1571131066,1571143788,1571213563,1571222745; JSESSIONID=C3AF59DC870CE70883C6588199C51CC0; Hm_lpvt_e997f0189b675e95bb22e0f8e2b5fa74=1571222749"
         # "Cookie": ""
 
     def __set_headers_out(self):
-        self.headers["Cookie"] = "__root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; TMOOC-SESSION=36590CECE6814AED990CB55DA3887ED6; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1570584414,1570686654,1570793087,1570793570; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1570796931"
+        self.headers[
+            "Cookie"] = "__root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; TMOOC-SESSION=36590CECE6814AED990CB55DA3887ED6; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1570584414,1570686654,1570793087,1570793570; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1570796931"
 
     def __set_data(self):
         self.data = {
@@ -50,28 +52,36 @@ class WebSpider:
         steps = res.xpath('//h2[@class="headline-1"]/span/text()')
         all = res.xpath('//div[@class="course-list"]')
         url_info = {}
-        print(len(steps))
-        for index, one in enumerate(all):
-            step_ = steps[index]
-            info = one.xpath('.//li[@class="opened"]')
-            if (not self.valid) or (step_ in self.valid):
-                self.dir_list_not_over.append(step_)
-                step = str(index + 1).zfill(4) + '_' + step_
-                print("目录:", step)
-                for onelist in info:
-                    name = onelist.xpath('./p/text()')[0].strip()
-                    name = name.replace("\r\n", "").replace("\t", "").replace(" ", "").replace("/", "").replace("(",
-                                                                                                                "").replace(
-                        ")", "")
-                    url = onelist.xpath('.//li[@class="sp"]/a/@href')[0]
 
-                    self.__parse_html_level2(step, name, url)
-            try:
-                if self.dir_list_not_over.get(step_):
-                    self.dir_list_not_over.remove(step_)
-            except:
-                print("exception:", step_)
-                print("exception:", self.dir_list_not_over)
+        t_list = []
+        for index, one in enumerate(all):
+            t = Thread(target=self.upload_one_dir, args=(index, one, steps))
+            t_list.append(t)
+            t.setDaemon(True)
+            t.start()
+
+        for t in t_list:
+            t.join()
+
+    def upload_one_dir(self, index, one, steps):
+        step_ = steps[index]
+        info = one.xpath('.//li[@class="opened"]')
+        if (not self.valid) or (step_ in self.valid):
+            print(1)
+            self.dir_list_not_over.append(step_)
+            step = str(index + 1).zfill(4) + '_' + step_
+            print("目录:", step)
+            for onelist in info:
+                name = onelist.xpath('./p/text()')[0].strip()
+                name = name.replace("\r\n", "").replace("\t", "").replace(" ", "").replace("/", "").replace("(",
+                                                                                                            "").replace(
+                    ")", "").replace('、', '').replace('：', '_').replace('（', '').replace('）', '')
+                url = onelist.xpath('.//li[@class="sp"]/a/@href')[0]
+
+                self.__parse_html_level2(step, name, url)
+
+        if step_ in self.dir_list_not_over:
+            self.dir_list_not_over.remove(step_)
 
     def __write_file(self, name, text):
         with open(name, "w") as f:
@@ -93,7 +103,8 @@ class WebSpider:
             if not os.path.exists(file_name):
                 print("文件名:", file_name)
                 self.__parse_html_level3(steps, mp4_title, name, url)
-                i += 1
+            i += 1
+
 
     def __parse_html_level3(self, steps, title, name, url):
         html = self.__get_html(url).content.decode("utf-8", "ignore")

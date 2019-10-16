@@ -7,6 +7,8 @@ import re
 import os
 from Crypto.Cipher import AES
 import time
+import signal
+from threading import Thread
 
 
 class WebSpider:
@@ -23,7 +25,7 @@ class WebSpider:
 
     def __set_headers(self):
         self.headers["Cookie"] = \
-            "tedu.local.language=zh-CN; __root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1570793570,1570840783,1570947953,1571012527; TMOOC-SESSION=AB55D185BB7B44C9ABB47DF452F27947; isCenterCookie=yes; cloudAuthorityCookie=0; _qdda=3-1.1us199; _qddab=3-3uok8v.k1rlsg4t; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1571131058; sessionid=AB55D185BB7B44C9ABB47DF452F27947|E_bfukbc1; versionListCookie=AIDTN201903; defaultVersionCookie=AIDTN201903; versionAndNamesListCookie=AIDTN201903N22NPython%25E4%25BA%25BA%25E5%25B7%25A5%25E6%2599%25BA%25E8%2583%25BD%25E5%2585%25A8%25E6%2597%25A5%25E5%2588%25B6%25E8%25AF%25BE%25E7%25A8%258BV06N22N658321; courseCookie=AID; stuClaIdCookie=658321; Hm_lvt_e997f0189b675e95bb22e0f8e2b5fa74=1571127325,1571129859,1571130659,1571131066; JSESSIONID=FA846C92048CB74D5885D4C5EC25B701; Hm_lpvt_e997f0189b675e95bb22e0f8e2b5fa74=1571131068; _qddamta_2852189568=3-0"
+            "tedu.local.language=zh-CN; __root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; cloudAuthorityCookie=0; TMOOC-SESSION=37FA154597864E36949685F86B7B4E38; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1570947953,1571012527,1571143781,1571213510; isCenterCookie=yes; _qdda=3-1.1us199; _qddab=3-di38ep.k1t926ft; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1571228868; sessionid=37FA154597864E36949685F86B7B4E38|E_bfukbc1; versionListCookie=AIDTN201903; defaultVersionCookie=AIDTN201903; versionAndNamesListCookie=AIDTN201903N22NPython%25E4%25BA%25BA%25E5%25B7%25A5%25E6%2599%25BA%25E8%2583%25BD%25E5%2585%25A8%25E6%2597%25A5%25E5%2588%25B6%25E8%25AF%25BE%25E7%25A8%258BV06N22N658321; courseCookie=AID; stuClaIdCookie=658321; Hm_lvt_e997f0189b675e95bb22e0f8e2b5fa74=1571143788,1571213563,1571222745,1571228876; JSESSIONID=17D89ECC12164521F3C1F795EEF92D6F; Hm_lpvt_e997f0189b675e95bb22e0f8e2b5fa74=1571228878; _qddamta_2852189568=3-0"
         # "Cookie": ""
 
     def __set_headers_out(self):
@@ -51,30 +53,41 @@ class WebSpider:
         steps = res.xpath('//h2[@class="headline-1"]/span/text()')
         all = res.xpath('//div[@class="course-list"]')
         url_info = {}
-        print(len(steps))
-        for index, one in enumerate(all):
-            print(index)
-            print(len(all))
-            step_ = steps[index]
-            info = one.xpath('.//li[@class="opened"]')
-            if (not self.valid) or (step_ in self.valid):
-                self.dir_list_not_over.append(step_)
-                step = str(index + 1).zfill(4) + '_' + step_
-                print("目录:", step)
-                for onelist in info:
-                    name = onelist.xpath('./p/text()')[0].strip()
-                    name = name.replace("\r\n", "").replace("\t", "").replace(" ", "").replace("/", "").replace("(",
-                                                                                                                "").replace(
-                        ")", "")
-                    url = onelist.xpath('.//li[@class="sp"]/a/@href')[0]
 
-                    self.__parse_html_level2(step, name, url)
-        try:
-            if self.dir_list_not_over.get(step_):
-                self.dir_list_not_over.remove(step_)
-        except:
-            print("exception:", step_)
-            print("exception:", self.dir_list_not_over)
+        t_list = []
+        for index, one in enumerate(all):
+            t = Thread(target=self.upload_one_dir, args=(index, one, steps))
+            t_list.append(t)
+            t.setDaemon(True)
+            t.start()
+
+        for t in t_list:
+            t.join()
+        # signal.signal(signal.SIGCHLD, signal.SIG_IGN)
+        # for index, one in enumerate(all):
+        #     pid = os.fork()
+        #     if pid == 0:
+        #         self.upload_one_dir(index, one, steps)
+        #         os._exit(0)
+
+    def upload_one_dir(self, index, one, steps):
+        step_ = steps[index]
+        info = one.xpath('.//li[@class="opened"]')
+        if (not self.valid) or (step_ in self.valid):
+            self.dir_list_not_over.append(step_)
+            step = str(index + 1).zfill(4) + '_' + step_
+            print("目录:", step)
+            for onelist in info:
+                name = onelist.xpath('./p/text()')[0].strip()
+                name = name.replace("\r\n", "").replace("\t", "").replace(" ", "").replace("/", "").replace("(",
+                                                                                                            "").replace(
+                    ")", "").replace('、', '').replace('：', '_').replace('（', '').replace('）', '')
+                url = onelist.xpath('.//li[@class="sp"]/a/@href')[0]
+
+                self.__parse_html_level2(step, name, url)
+
+        if step_ in self.dir_list_not_over:
+            self.dir_list_not_over.remove(step_)
 
     def __write_file(self, name, text):
         with open(name, "w") as f:
@@ -96,7 +109,7 @@ class WebSpider:
             if not os.path.exists(file_name):
                 print("文件名:", file_name)
                 self.__parse_html_level3(steps, mp4_title, name, url)
-                i += 1
+            i += 1
 
     def __parse_html_level3(self, steps, title, name, url):
         html = self.__get_html(url).content.decode("utf-8", "ignore")
@@ -191,10 +204,11 @@ class WebSpider:
 def now():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
-valid_list = ['DATASCIENCE','DATASCIENCE_PROJECT','MACHINE_LEARNING','MACHINE_LEARNING_PROJECT']
+
+valid_list = []
 url = "http://tts.tmooc.cn/studentCenter/toMyttsPage"
 base_dir = "/home/tarena/1905/"
-ws = WebSpider(base_dir=base_dir,valid = valid_list)
+ws = WebSpider(base_dir=base_dir, base_name='AID1905mp4', valid=valid_list)
 ws.run(url)
 
 # url = "http://videotts.it211.com.cn/aid19050603am/aid19050603am-92.ts"
