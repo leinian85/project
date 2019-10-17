@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# encoding:utf8
 
 '''
     V3 : 多线程断点续传版本
@@ -83,7 +84,6 @@ class TarenaSpider:
 
         return html
 
-
     def create_dir(self, url):
         if url.endswith("/"):
             dir = url
@@ -93,31 +93,35 @@ class TarenaSpider:
         if not os.path.exists(dir):
             os.makedirs(dir)
 
-    def go_next_dir(self, url, if_dir):
+    def go_next_dir(self, url, if_dir, dir_name=None):
         if not if_dir:
-            self.download(url)
+            self.download(url, dir_name)
             return
 
-        html = self.get_html(url).content.decode("utf-8", "ignore")
+        html = self.get_html(url).content.decode("GBK")
+        # html = self.get_html(url).text
         r_obj = etree.HTML(html)
         r_list = r_obj.xpath("//a/@href")
-        for urlone in r_list:
+        name_list = r_obj.xpath('//a/text()')
+        for index, urlone in enumerate(r_list):
             if urlone in INGORE:
                 continue
 
             dir_one = url + urlone
-
+            new_dir_name = dir_name + name_list[index]
             # url = "http://code.tarena.com.cn/AIDCode/aid1905/14_spider/"
             # 获取上级目录 AIDCode/aid1905/14_spider/
             if_dir = is_dir(dir_one)
 
-            self.go_next_dir(dir_one, if_dir)
+
+            self.go_next_dir(dir_one, if_dir, new_dir_name)
             # time.sleep(random.randint(1, 3))
 
     # 下载文件
-    def download(self, url):
+    def download(self, url, dir_name):
         filename = self.dir + "/".join(self.url_dir(url))
-        self.create_dir(filename)
+        new_dir_name = self.dir + "/".join(self.url_dir(dir_name))
+        self.create_dir(new_dir_name)
 
         name = url.split("/")[-1]
         file_size = int(all_files_size.get(filename, "0"))
@@ -200,15 +204,18 @@ class TarenaSpider:
         for item in new_file:
             print(item)
 
-    def run(self, url, if_dir):
-        self.go_next_dir(url, if_dir)
+    def run(self, url, if_dir,dir_name):
+        self.go_next_dir(url, if_dir,dir_name)
 
     def get_fist_dir(self, url):
-        html = self.get_html(url, is_file=False).content.decode("utf-8", "ignore")
+        html = self.get_html(url, is_file=False).content.decode("GBK")
+        # html = self.get_html(url, is_file=False).text
         xpath_obj = etree.HTML(html)
         first_dir = xpath_obj.xpath("//a/@href")
+        first_dir_name = xpath_obj.xpath("//a/text()")
         url_list = [self.baseurl + dir for dir in first_dir if dir not in INGORE]
-        return url_list
+        url_list_name = [self.baseurl + dir for dir in first_dir_name if dir not in INGORE]
+        return (url_list,url_list_name)
 
     @staticmethod
     def finial_show():
@@ -222,8 +229,10 @@ class TarenaSpider:
 def now():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
+
 def is_dir(url):
     return True if url.endswith("/") else False
+
 
 def test_run_on_file(url):
     ts = TarenaSpider(url, downdir)
@@ -237,25 +246,24 @@ def test_run_on_file(url):
     ts.finial_show()
 
 
-def run(baseurl, downdir, if_dir):
+def run(baseurl,linkName, downdir, if_dir):
     print("{} 开始提取...".format(baseurl))
     ts = TarenaSpider(baseurl, downdir)
-    ts.run(baseurl, if_dir)
-    print("{} 提取完成.".format(baseurl))
+    ts.run(baseurl, if_dir,linkName)
+    print("{} 提取完成.".format(linkName))
 
 
 def main(baseurl, downdir):
     ts = TarenaSpider(baseurl, downdir)
     ts.data_init()
     try:
-        linkList = ts.get_fist_dir(baseurl)
-
+        linkList,linkNameList  = ts.get_fist_dir(baseurl)
         if_dir = False
         t_list = []
-        for alink in linkList:
+        for index,alink in enumerate(linkList):
             if_dir = is_dir(alink)
 
-            t = Thread(target=run, args=(alink, downdir, if_dir))
+            t = Thread(target=run, args=(alink,linkNameList[index], downdir, if_dir))
             t_list.append(t)
             t.setDaemon(True)
             t.start()
@@ -270,9 +278,10 @@ def main(baseurl, downdir):
     ts.finial_show()
 
 
-baseurl = "http://code.tarena.com.cn/AIDCode/aid1905/"
+# baseurl = "http://code.tarena.com.cn/AIDCode/aid1905/"
+baseurl = 'http://code.tarena.com.cn/TSDCode/tsd1906/'
 # 设置下载目录
-downdir = "/home/tarena/1905/"
+downdir = "/home/tarena/1905/move/"
 
 main(baseurl, downdir)
 
