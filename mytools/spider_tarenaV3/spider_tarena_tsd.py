@@ -123,14 +123,14 @@ class TarenaSpider:
         new_dir_name = self.dir + "/".join(self.url_dir(dir_name))
         self.create_dir(new_dir_name)
 
-        name = url.split("/")[-1]
+        name = dir_name.split("/")[-1]
         file_size = int(all_files_size.get(filename, "0"))
         if_continue = False
         # 判断是否需要续传,大于等于配置的大小就需要续传
         if file_size >= FILESIZE:
             if_continue = True
 
-        if os.path.exists(filename):
+        if os.path.exists(new_dir_name):
             local_file_size = int(os.path.getsize(filename))
         else:
             local_file_size = 0
@@ -141,10 +141,10 @@ class TarenaSpider:
                 return
         else:
             # 判断不需要续传的文件是否存在
-            if os.path.exists(filename):
+            if os.path.exists(new_dir_name):
                 return
 
-        self.writh_file(filename, name, url, local_file_size)
+        self.writh_file(new_dir_name, name, url, local_file_size)
 
     # 写入文件
     def writh_file(self, d_filename, filename, url, local_file_size):

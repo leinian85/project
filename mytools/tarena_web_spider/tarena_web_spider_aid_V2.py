@@ -207,8 +207,8 @@ def now():
 
 valid_list = []
 url = "http://tts.tmooc.cn/studentCenter/toMyttsPage"
-base_dir = "/home/tarena/1905/move"
-ws = WebSpider(base_dir=base_dir, base_name='AID1905mp4', valid=valid_list)
+base_dir = "/home/tarena/1905/move/"
+ws = WebSpider(base_dir=base_dir, base_name='AID1905', valid=valid_list)
 ws.run(url)
 
 # url = "http://videotts.it211.com.cn/aid19050603am/aid19050603am-92.ts"

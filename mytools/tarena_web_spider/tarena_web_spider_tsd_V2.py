@@ -24,7 +24,7 @@ class WebSpider:
 
     def __set_headers(self):
         self.headers["Cookie"] = \
-            "tedu.local.language=zh-CN; __root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; cloudAuthorityCookie=0; TMOOC-SESSION=37FA154597864E36949685F86B7B4E38; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1570947953,1571012527,1571143781,1571213510; isCenterCookie=yes; _qdda=3-1.1us199; _qddab=3-737adw.k1t5ergg; _qddamta_2852189568=3-0; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1571222738; sessionid=37FA154597864E36949685F86B7B4E38|E_bfuogu9; versionListCookie=TSDTN201905; defaultVersionCookie=TSDTN201905; versionAndNamesListCookie=TSDTN201905N22N%25E8%25BD%25AF%25E4%25BB%25B6%25E6%25B5%258B%25E8%25AF%2595%25E5%2585%25A8%25E6%2597%25A5%25E5%2588%25B6%25E8%25AF%25BE%25E7%25A8%258BV05N22N711538; courseCookie=TESTING; stuClaIdCookie=711538; Hm_lvt_e997f0189b675e95bb22e0f8e2b5fa74=1571131066,1571143788,1571213563,1571222745; JSESSIONID=C3AF59DC870CE70883C6588199C51CC0; Hm_lpvt_e997f0189b675e95bb22e0f8e2b5fa74=1571222749"
+            "tedu.local.language=zh-CN; __root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; TMOOC-SESSION=D1477C117CE94FC3837011344ABA8144; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1571143781,1571213510,1571283150,1571359188; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1571359188; sessionid=D1477C117CE94FC3837011344ABA8144|E_bfuogu9; cloudAuthorityCookie=0; versionListCookie=TSDTN201905; defaultVersionCookie=TSDTN201905; versionAndNamesListCookie=TSDTN201905N22N%25E8%25BD%25AF%25E4%25BB%25B6%25E6%25B5%258B%25E8%25AF%2595%25E5%2585%25A8%25E6%2597%25A5%25E5%2588%25B6%25E8%25AF%25BE%25E7%25A8%258BV05N22N711538; courseCookie=TESTING; stuClaIdCookie=711538; Hm_lvt_e997f0189b675e95bb22e0f8e2b5fa74=1571213563,1571222745,1571228876,1571359196; isCenterCookie=yes; Hm_lpvt_e997f0189b675e95bb22e0f8e2b5fa74=1571359198; _qdda=3-1.1us199; _qddab=3-77ciek.k1vep19c; _qddamta_2852189568=3-0; JSESSIONID=B30C6A52BE6F9976C155A32690A87975"
         # "Cookie": ""
 
     def __set_headers_out(self):
@@ -202,7 +202,7 @@ def now():
 
 valid_list = []
 url = "http://tts.tmooc.cn/studentCenter/toMyttsPage"
-base_dir = "/home/tarena/1905/move"
+base_dir = "/home/tarena/1905/move/"
 ws = WebSpider(base_dir=base_dir, base_name='TSD1906', valid=valid_list)
 ws.run(url)
 
