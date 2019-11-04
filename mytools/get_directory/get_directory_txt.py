@@ -92,7 +92,8 @@ class AutoDirectoty:
 
 
 def main():
-    path = "/home/tarena/1905/note"
+    # path = "/home/tarena/1905/move/TSD1906/"
+    path = "/media/tarena/leinian/学习/达内笔记/TSD906_测试/"
     ad = AutoDirectoty(path)
     ad.run()
 

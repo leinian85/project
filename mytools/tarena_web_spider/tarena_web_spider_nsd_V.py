@@ -7,7 +7,6 @@ import re
 import os
 from Crypto.Cipher import AES
 import time
-import signal
 from threading import Thread
 
 
@@ -20,12 +19,12 @@ class WebSpider:
         self.dir_list_not_over = []
         self.headers = {
             "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0",
-            "Referer": "http://tts.tmooc.cn/video/showVideo?menuId=672192&version=AIDTN201903"
+            "Referer": "http://tts.tmooc.cn/video/showVideo?menuId=672815&version=NSDTN201904"
         }
 
     def __set_headers(self):
         self.headers["Cookie"] = \
-            "tedu.local.language=zh-CN; __root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1572003004,1572246919,1572310413,1572345781; TMOOC-SESSION=BCF8B189748043178D60E20782A13225; isCenterCookie=yes; cloudAuthorityCookie=0; _qdda=3-1.1us199; _qddab=3-clhm9e.k2jpfq2j; _qddamta_2852189568=3-0; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1572829739; sessionid=BCF8B189748043178D60E20782A13225|E_bfukbc1; versionListCookie=AIDTN201903; defaultVersionCookie=AIDTN201903; versionAndNamesListCookie=AIDTN201903N22NPython%25E4%25BA%25BA%25E5%25B7%25A5%25E6%2599%25BA%25E8%2583%25BD%25E5%2585%25A8%25E6%2597%25A5%25E5%2588%25B6%25E8%25AF%25BE%25E7%25A8%258BV06N22N658321; courseCookie=AID; stuClaIdCookie=658321; Hm_lvt_e997f0189b675e95bb22e0f8e2b5fa74=1572407855,1572828395,1572828425,1572829752; Hm_lpvt_e997f0189b675e95bb22e0f8e2b5fa74=1572829754; JSESSIONID=3436EC2F7AA0DC9118E6C7E0A0ABD7B7"
+            "tedu.local.language=zh-CN; __root_domain_v=.tmooc.cn; _qddaz=QD.4obkqa.one1si.k0yyg6co; Hm_lvt_51179c297feac072ee8d3f66a55aa1bd=1572003004,1572246919,1572310413,1572345781; TMOOC-SESSION=BCF8B189748043178D60E20782A13225; isCenterCookie=yes; cloudAuthorityCookie=0; _qdda=3-1.1us199; _qddab=3-jow5dd.k2js6b66; _qddamta_2852189568=3-0; Hm_lpvt_51179c297feac072ee8d3f66a55aa1bd=1572833038; sessionid=BCF8B189748043178D60E20782A13225|E_bfunvkn; versionListCookie=NSDTN201904; defaultVersionCookie=NSDTN201904; versionAndNamesListCookie=NSDTN201904N22NLinux%25E4%25BA%2591%25E8%25AE%25A1%25E7%25AE%2597%25E5%2585%25A8%25E6%2597%25A5%25E5%2588%25B6%25E8%25AF%25BE%25E7%25A8%258BV07N22N699032; courseCookie=LINUX; stuClaIdCookie=699032; Hm_lvt_e997f0189b675e95bb22e0f8e2b5fa74=1572828425,1572829752,1572833026,1572833050; Hm_lpvt_e997f0189b675e95bb22e0f8e2b5fa74=1572833052; JSESSIONID=86139C9D0BA9E9313BAFA068F36AA024"
         # "Cookie": ""
 
     def __set_headers_out(self):
@@ -63,17 +62,12 @@ class WebSpider:
 
         for t in t_list:
             t.join()
-        # signal.signal(signal.SIGCHLD, signal.SIG_IGN)
-        # for index, one in enumerate(all):
-        #     pid = os.fork()
-        #     if pid == 0:
-        #         self.upload_one_dir(index, one, steps)
-        #         os._exit(0)
 
     def upload_one_dir(self, index, one, steps):
         step_ = steps[index]
         info = one.xpath('.//li[@class="opened"]')
         if (not self.valid) or (step_ in self.valid):
+            print(1)
             self.dir_list_not_over.append(step_)
             step = str(index + 1).zfill(4) + '_' + step_
             print("目录:", step)
@@ -110,6 +104,7 @@ class WebSpider:
                 print("文件名:", file_name)
                 self.__parse_html_level3(steps, mp4_title, name, url)
             i += 1
+
 
     def __parse_html_level3(self, steps, title, name, url):
         html = self.__get_html(url).content.decode("utf-8", "ignore")
@@ -208,7 +203,7 @@ def now():
 valid_list = []
 url = "http://tts.tmooc.cn/studentCenter/toMyttsPage"
 base_dir = "/home/tarena/1905/move/"
-ws = WebSpider(base_dir=base_dir, base_name='AID1905', valid=valid_list)
+ws = WebSpider(base_dir=base_dir, base_name='NSD1907', valid=valid_list)
 ws.run(url)
 
 # url = "http://videotts.it211.com.cn/aid19050603am/aid19050603am-92.ts"
